@@ -1,0 +1,142 @@
+@import url(https://fonts.google.com/specimen/Fjalla+One);
+@import url(https://fonts.google.com/?query=Droid+Serif);
+
+:root {
+    --white: #F6F6FF;
+    --black: #1F1F1F;
+    --green: #64be8b;
+    --lightgreen:#7BDCB5;
+    --pink:#D93DA5;
+    --yellow: #E6E16D;
+    --red: #FF5757;
+}
+
+.white{
+  color: #F6F6FF;
+}
+
+.bgWhite {
+  background-color: #F6F6FF;
+}
+
+.black {
+  color: #1F1F1F;
+}
+
+.bgBlack {
+  background-color: #1F1F1F;
+}
+
+.green {
+  color: #64be8b;
+}
+
+.bgGreen {
+  background-color: #64be8b;
+}
+
+.lightgreen {
+  color: #7BDCB5;
+}
+
+.bgLightgreen {
+  background-color: #7BDCB5;
+}
+
+.pink {
+  color: #D93DA5;
+}
+
+.bgPink {
+  background-color: #D93DA5;
+}
+
+.yellow {
+  color: #E6E16D;
+}
+
+.bgYellow {
+  background-color: #E6E16D;
+}
+
+.red {
+  color: #FF5757;
+}
+
+.bgRed {
+  background-color: #FF5757;
+}
+
+#logo {
+  width: 25%;
+  height: 7%;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--lightgreen);
+    transition: all 0.3s ease;
+    
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+
+  .music-note {
+    position: absolute;
+    font-size: 1em;
+    animation: move 5s infinite;
+    color: #D93DA5 !important;
+    
+  }
+
+  
+  
+  @keyframes move {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(200px, 0); }
+    50% { transform: translate(100px, 200px); }
+    75% { transform: translate(0, 400px); }
+    100% { transform: translate(300px, 0); }
+  }
+  
+  .card h2 {
+    margin-top: 0;
+    font-size: 20px;
+  }
+  
+  .card p {
+    margin-bottom: 10px;
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 6px;
+  } 
+
+  /* Style de mon filtre */
+.filtres-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Style pour les écrans plus petits (ajustez les valeurs en conséquence) */
+@media screen and (max-width: 600px) {
+  .filtres-container {
+    flex-direction: column;
+  }
+}

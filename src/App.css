@@ -1,0 +1,127 @@
+@import url(https://fonts.google.com/specimen/Fjalla+One);
+@import url(https://fonts.google.com/?query=Droid+Serif);
+
+:root {
+    --white: #F6F6FF;
+    --black: #1F1F1F;
+    --green: #64be8b;
+    --lightgreen:#7BDCB5;
+    --pink:#D93DA5;
+    --yellow: #E6E16D;
+    --red: #FF5757;
+}
+
+.white{
+  color: #F6F6FF;
+}
+
+.bgWhite {
+  background-color: #F6F6FF;
+}
+
+.black {
+  color: #1F1F1F;
+}
+
+.bgBlack {
+  background-color: #1F1F1F;
+}
+
+.green {
+  color: #64be8b;
+}
+
+.bgGreen {
+  background-color: #64be8b;
+}
+
+.lightgreen {
+  color: #7BDCB5;
+}
+
+.bgLightgreen {
+  background-color: #7BDCB5;
+}
+
+.pink {
+  color: #D93DA5;
+}
+
+.bgPink {
+  background-color: #D93DA5;
+}
+
+.yellow {
+  color: #E6E16D;
+}
+
+.bgYellow {
+  background-color: #E6E16D;
+}
+
+.red {
+  color: #FF5757;
+}
+
+.bgRed {
+  background-color: #FF5757;
+}
+
+.App {
+  text-align: center;
+}
+
+/*dimension du logo*/
+#logo {
+  padding-left: 10%;
+  width: 5%;
+  height: 5%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  /* Vos styles d'arrière-plan ou autres styles globaux */
+  background-color: #FF5757; /* Exemple de couleur d'arrière-plan */
+  
+  /* Autres styles globaux */
+}
+
+.reseauxSociaux {
+  color: #64be8b;
+}
+
+.custom-cart-link {
+  position: absolute;
+  top: 0;
+  right: 20px; /* Ajustez la valeur pour le positionnement horizontal */
+  background-color: #7BDCB5;
+}
