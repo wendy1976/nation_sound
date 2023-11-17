@@ -2,13 +2,15 @@ import L from 'leaflet'; // Importez la bibliothèque Leaflet
 import 'leaflet/dist/leaflet.css';
 import React from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { useMediaQuery } from 'react-responsive';
 
+// Import de mes icones pour la carte
 import barIcon from './assets/imagesEtLogo/images/icone_bar.png';
 import campingIcon from './assets/imagesEtLogo/images/icone_camping.png';
 import restaurantIcon from './assets/imagesEtLogo/images/icone_restaurant.png';
 import sceneIcon from './assets/imagesEtLogo/images/icone_scene.png';
 import wcIcon from './assets/imagesEtLogo/images/icone_wc.png';
-
+// Import de mes images pour mes pop-up
 import barImage from './assets/imagesEtLogo/images/bar1.png';
 import campingImage from './assets/imagesEtLogo/images/camping1.png';
 import djImage from './assets/imagesEtLogo/images/dj.png';
@@ -25,6 +27,8 @@ import wc3Image from './assets/imagesEtLogo/images/wc3.png';
 
 const MyMap = () => {
   const cascadeCoordinates = [48.8621, 2.2526];
+  // Rajout pour le filtre par catégorie
+  const [selectedCategory, setSelectedCategory] = React.useState(null);
 
   // Définir des icônes Leaflet pour chaque catégorie
   const barIconLeaflet = new L.Icon({
@@ -72,29 +76,98 @@ const MyMap = () => {
     { category: 'wc', coordinates: [48.8640, 2.2427], icon: wcIconLeaflet, name: 'Toilettes 3',popupContent: <div dangerouslySetInnerHTML={{ __html: "Toilettes pour Homme & Femme, et Handicapés" }} />, image: wc3Image },
     { category: 'Camping', coordinates: [48.8565, 2.2474], icon: campingIconLeaflet, name: 'Camping « Nation Sound »',popupContent: <div dangerouslySetInnerHTML={{ __html: " « <strong>Le camping du festival</strong> » est gratuit pour tous les festivaliers ayant acheté le PASS 2 Jours ou 3 Jours." }} />, image: campingImage },
   ];
+  // pour les medias queries du filtre
+  const isDesktopOrLaptop = useMediaQuery({ query: '(min-device-width: 1224px)' });
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
+  const filteredLocations = selectedCategory
+    ? locations.filter(location => location.category === selectedCategory)
+    : locations;
+
+  const handleCategoryFilter = (category) => {
+    setSelectedCategory(category === selectedCategory ? null : category);
+  };
+
+  
   
 
   return (
-    <MapContainer center={cascadeCoordinates} zoom={15} style={{ height: "500px", width: "100%" }}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      />
+    <>
+    <div className="">
+    {isDesktopOrLaptop && (
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Scène')}>
+          <span style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={sceneIcon} alt="Scène" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+            Scènes
+          </span>
+        </button>
 
-      {locations.map((location, index) => (
-        <Marker key={index} position={location.coordinates} icon={location.icon}>
-          <Popup>
-            <div>
-              <h3 className='pink'>{location.name}</h3>
-              <p><strong>Catégorie:</strong> {location.category}</p>
-              <p>{location.popupContent}</p>
-              <img src={location.image} alt={location.category} style={{ width: '45px', height: '45px' }} />
-            </div>
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Restaurant')}>
+          <span style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={restaurantIcon} alt="Restaurant" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+            Restaurants
+          </span>
+        </button>
+
+        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Bar')}>
+          <span style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={barIcon} alt="Bar" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+            Bars
+          </span>
+        </button>
+
+        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('wc')}>
+          <span style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={wcIcon} alt="WC" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+            WC
+          </span>
+        </button>
+
+        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Camping')}>
+          <span style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={campingIcon} alt="Camping" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+            Camping
+          </span>
+        </button>
+      </div>
+    )}
+
+{isTabletOrMobile && (
+  <div style={{ marginBottom: '10px' }}>
+    <select className="form-select" onChange={(e) => handleCategoryFilter(e.target.value)}>
+      <option value="Scène">Scènes</option>
+      <option value="Restaurant">Restaurants</option>
+      <option value="Bar">Bars</option>
+      <option value="wc">WC</option>
+      <option value="Camping">Camping</option>
+    </select>
+  </div>
+)}
+
+    
+
+      <MapContainer center={cascadeCoordinates} zoom={15} style={{ height: '500px', width: '100%' }}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+
+        {filteredLocations.map((location, index) => (
+          <Marker key={index} position={location.coordinates} icon={location.icon}>
+            <Popup>
+              <div>
+                <h3 className='pink'>{location.name}</h3>
+                <p><strong>Catégorie:</strong> {location.category}</p>
+                <p>{location.popupContent}</p>
+                <img src={location.image} alt={location.category} style={{ width: '45px', height: '45px' }} />
+              </div>
+            </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      </div>
+    </>
   );
 };
 
