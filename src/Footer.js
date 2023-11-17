@@ -21,6 +21,7 @@ function Footer() {
               <li><a href="/contactForm">Contact</a></li>
               <li><a href="/newsletter">Newsletter</a></li>
               <li><a href="/faq">Faq</a></li>
+              <li><a href="/legalNotice">Mentions Légales</a></li>
             </ul>
           </div>
         </div>

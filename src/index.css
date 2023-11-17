@@ -73,7 +73,7 @@
 }
 
 /*le positionnement de mon bouton voir la boutique au milieu du slide */
-#laBoutique {
+#laBilletterie {
   top: -460px;
   position: relative;
   left: 43%; 
@@ -81,7 +81,7 @@
 }
 
 /*effet de survol mon bouton voir la boutique au milieu du slide */    
-#laBoutique:hover {
+#laBilletterie:hover {
   color:#D93DA5;
 }  
 
@@ -105,7 +105,7 @@
 
 body {
   /* Vos styles d'arrière-plan ou autres styles globaux */
-  background-color: #FF5757; /* Exemple de couleur d'arrière-plan */
+  background-color: #F6F6FF; /* Exemple de couleur d'arrière-plan */
   
   /* Autres styles globaux */
 }
@@ -267,4 +267,61 @@ button {
 
 button:hover {
   background-color: #E6E16D;
+}
+
+/* Mise en forme de la page des mentions légales */
+.mentions-legales-container {
+  max-width: 800px; /* Définir la largeur maximale du cadre */
+  margin: 0 auto; /* Centrer le cadre horizontalement */
+  padding: 20px; /* Ajouter un espacement intérieur au cadre */
+}
+
+.mentions-legales-title {
+  margin-bottom: 30px; /* Ajouter de l'espace en bas du titre */
+}
+
+/* Mise en forme de la page billetterie */
+.pass-item {
+  display: flex;
+  border: 1px solid #ccc;
+  margin: 10px;
+}
+
+.pass-content {
+  flex: 1;
+  padding: 10px;
+}
+
+.pass-image img {
+  width: 50%;
+  height: auto;
+}
+
+/* Message pop-up de l'ajout au panier */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+/* Mise en forme du panier */
+.panier {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+/* pour ne pas souligner le texte des boutons quand il renvoie vers un lien */
+.lien-bouton {
+  text-decoration: none;
 }

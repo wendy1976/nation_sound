@@ -15,7 +15,7 @@ function Accueil() {
       <Header />
       <CarouselComponent />
       <div>
-        <Link to="/boutique" className="btn bgTurquoise h4 btn-lg orange" title="Voir la boutique" id="laBoutique">
+        <Link to="/billetterie" className="btn bgTurquoise h4 btn-lg orange" title="Voir la billetterie" id="laBilletterie">
           <strong>LA BILLETTERIE</strong>
         </Link>
       </div>

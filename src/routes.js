@@ -1,9 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import Accueil from './Accueil';
+import ArtistPage from './ArtistPage';
+import Billetterie from './Billetterie';
 import Concerts from './Concerts';
 import ContactForm from './ContactForm';
 import Faq from './Faq';
 import Infos from './Infos';
+import LegalNotice from './LegalNotice';
+import MyMap from './MyMap';
 import Newsletter from './Newsletter';
 import Partners from './Partners';
 
@@ -21,7 +25,11 @@ function AppRoutes() {
       <Route path="/contactForm" element={<ContactForm />} />
       <Route path="/newsletter" element={<Newsletter />} />
       <Route path="/faq" element={<Faq />} />
-        
+      <Route path="/legalNotice" element={<LegalNotice />} />
+      <Route path="/billetterie" element={<Billetterie/>} />
+      <Route path="/artistPage" element={<ArtistPage />} />
+      <Route path="/myMap" element={<MyMap />} />
+    
     </Routes>
   );
 }

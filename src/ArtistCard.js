@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Importation de toutes mes images de produits
 import image14 from "./assets/imagesEtLogo/images/Aline_Garner.jpg";
@@ -90,7 +91,9 @@ function ArtistCard(props) {
                     <h3>{props.name}</h3>
                     <p>Date: {props.dateConcert}</p>
                     <p>Scène: {props.scene}</p>
-                    <button style={{ marginTop: '10px' }}>Voir plus <span style={{ fontWeight: 'bold', color: 'red' }}>+</span></button>
+                    <Link to={"/artistPage"} style={{ textDecoration: 'none' }}>
+                        <button>Voir plus <span style={{ fontWeight: 'bold', color: 'red' }}>+</span></button>
+                    </Link>
                 </div>
             </div>
         </div>

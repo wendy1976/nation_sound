@@ -51,14 +51,14 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="position-relative">
             <Link to="/" className="nav-link">
-              <h1 className="h4">Accueil</h1>
+              <h1 className="h5 pink">Accueil</h1>
             </Link>
             <Link to="/concerts" className="nav-link">
-              <h1 className="h4">Concert & Programmation</h1>
+              <h1 className="h5 pink">Concert & Programmation</h1>
             </Link>
             <Dropdown show={showInfoSubMenu} onToggle={toggleInfoSubMenu}>
               <Dropdown.Toggle id="infoDropdown" as={Nav.Link}>
-                <h1 className="h4">Informations et FAQ</h1>
+                <h1 className="h5 pink">Informations et FAQ</h1>
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item as={Link} to="/infos" onClick={handleClose}>
@@ -86,8 +86,15 @@ function Header() {
               </Dropdown.Menu>
             </Dropdown>
             <Link to="/partners" className="nav-link">
-              <h1 className="h4">Nos partenaires</h1>
+              <h1 className="h5 pink">Nos partenaires</h1>
             </Link>
+            <Link to="/billetterie" className="nav-link">
+              <h1 className="h5 pink">Billetterie</h1>
+            </Link>
+            <Link to="/myMap" className="nav-link">
+              <h1 className="h5 pink">Carte interactive</h1>
+            </Link>
+            
           </Nav>
           
         </Navbar.Collapse>
