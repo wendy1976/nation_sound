@@ -6,7 +6,7 @@ import ArtistCard from './ArtistCard';
 import CarouselComponent from './CarouselComponent';
 import Footer from './Footer';
 import Header from './Header';
-//import InteractiveMap from './InteractiveMap';
+import miniCarteImage from './assets/imagesEtLogo/images/miniCarte.png';
 
 
 function Accueil() {
@@ -159,11 +159,16 @@ function Accueil() {
             </form>
           </div>
         </div>
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6"style={{ textAlign: 'center' }} >
           <h3>Carte Interactive</h3>
           <p>Découvrez les lieux de nos concerts sur la carte interactive.</p>
+          <img
+                    src={miniCarteImage}
+                    alt="présentation de la carte interactive"
+                    style={{ maxWidth: '(20%', height: 'auto', display: 'block', margin: '0 auto' }}
+                />
           <p>
-            Consultez la <a href="/carte-interactive">carte interactive</a> pour plus de détails.
+            Consultez la <a href="/myMap">carte interactive</a> pour plus de détails.
           </p>
           {/* Autres éléments de votre page */}
          

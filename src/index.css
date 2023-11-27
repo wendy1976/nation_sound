@@ -67,10 +67,7 @@
   background-color: #FF5757;
 }
 
-#logo {
-  width: 25%;
-  height: 7%;
-}
+
 
 /*le positionnement de mon bouton voir la boutique au milieu du slide */
 #laBilletterie {
@@ -92,7 +89,7 @@
   border-radius: 5px;
 }
 
-/*page boutique: les paramètres de mes fiches produits*/
+/*page concert et programmation: les paramètres de mes fiches concerts*/
 .product-card {
   width: calc(33.33% - 20px);
   float: right;
@@ -256,7 +253,7 @@ textarea {
 }
 
 button {
-  width: 100%;
+  width: auto;
   padding: 10px;
   background-color: #D93DA5;
   color: #fff;
@@ -324,4 +321,11 @@ button:hover {
 /* pour ne pas souligner le texte des boutons quand il renvoie vers un lien */
 .lien-bouton {
   text-decoration: none;
+}
+
+/* mise en forme de mon bouton panier */
+.panier-button {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }

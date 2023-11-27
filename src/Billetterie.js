@@ -1,3 +1,5 @@
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
 import Image from './assets/imagesEtLogo/images/pass.jpg';
@@ -35,12 +37,10 @@ const Billetterie = () => {
   }, []);
 
   const ajouterAuPanier = (pass) => {
-    console.log('Panier avant ajout :', panier);
-
     setPanier((prevPanier) => {
       const newPanier = { ...prevPanier };
       const titre = pass.field_titre.value;
-
+  
       if (newPanier[titre]) {
         // Si le produit existe, augmenter la quantité
         newPanier[titre].quantite += 1;
@@ -56,7 +56,7 @@ const Billetterie = () => {
       // Cacher le message après 20 secondes
       setTimeout(() => {
       setMessage('');
-    }, 20000);
+    }, 5000);
 
       return newPanier;
     });
@@ -70,17 +70,17 @@ const Billetterie = () => {
   const supprimerDuPanier = (pass) => {
     setPanier((prevPanier) => {
       const newPanier = { ...prevPanier };
-
-      if (newPanier[pass.id]) {
+  
+      if (newPanier[pass.field_titre.value]) {
         // Si le produit existe, diminuer la quantité
-        newPanier[pass.id].quantite -= 1;
-
+        newPanier[pass.field_titre.value].quantite -= 1;
+  
         // Si la quantité atteint zéro, supprimer le produit du panier
-        if (newPanier[pass.id].quantite === 0) {
-          delete newPanier[pass.id];
+        if (newPanier[pass.field_titre.value].quantite === 0) {
+          delete newPanier[pass.field_titre.value];
         }
       }
-
+  
       return newPanier;
     });
   };
@@ -102,7 +102,9 @@ const Billetterie = () => {
     <Layout>
       <div className="navbar">
         {/* Ajouter un bouton ou un lien pour afficher/masquer le panier */}
-        <button onClick={togglePanier}>Panier</button>
+        <button className="panier-button" onClick={togglePanier}>
+        <FontAwesomeIcon icon={faShoppingCart} /> Panier
+        </button>
       </div>
       {/* Afficher le panier s'il est visible */}
       {afficherPanier && (
@@ -126,7 +128,7 @@ const Billetterie = () => {
 )}
       {message && (
         <div className="popup">
-          <p>{message}</p>
+          <p className='pink'>{message}</p>
         </div>
       )}
       <div className="container">
@@ -151,6 +153,7 @@ const Billetterie = () => {
 };
 
 export default Billetterie;
+
 
 
 

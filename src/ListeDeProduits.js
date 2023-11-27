@@ -11,7 +11,14 @@ function ListeDeProduits() {
     Electro: false,
     Celtique: false,
   });
-  const [filtreDate, setFiltreDate] = useState(null);
+
+ 
+  const [filtresDate, setFiltresDate] = useState({
+    "21 Juin 2024": false,
+    "22 Juin 2024": false,
+    "23 Juin 2024": false,
+  });
+
   const [filtresScene, setFiltresScene] = useState({
     "Horizon Sonore": false,
     "Cybergroove": false,
@@ -20,18 +27,21 @@ function ListeDeProduits() {
     "Terre d'Emeraude": false,
   });
 
-  
   const [filtreOuvert, setFiltreOuvert] = useState(false);
-  
 
   useEffect(() => {
-    fetch('/jsonapi/node/produits')
+    const url = new URL('https://promptia.fr/wp-json/wc/v3/products?_embed');
+    url.searchParams.append('consumer_key', 'ck_e2c7c141b576494392f0d84d83daa63d792b71ff');
+    url.searchParams.append('consumer_secret', 'cs_b5f92310248c73aaf7a70782cbb32ed19b761c0e');
+    url.searchParams.append('per_page', 100); // Vous pouvez ajuster le nombre en fonction de votre nombre total de produits
+    url.searchParams.append('page', 1); // Vous pouvez ajuster la page en fonction de votre besoin
+  
+    fetch(url)
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        if (data && data.data) {
-          const produitsExtraits = data.data.map(item => item.attributes);
-          setProduits(produitsExtraits);
+        if (data) {
+          setProduits(data);
         }
       })
       .catch(error => console.error('Erreur:', error));
@@ -40,28 +50,32 @@ function ListeDeProduits() {
   const produitsFiltres = produits.filter((produit) => {
     
 
-    const dateConcert = new Date(produit.field_date_du_concert).getTime();
-
     const musiqueMatch =
-      (filtresMusique.Pop && produit.field_musique.value === 'Pop') ||
-      (filtresMusique.Rock && produit.field_musique.value === 'Rock') ||
-      (filtresMusique.Reggae && produit.field_musique.value === 'Reggae') ||
-      (filtresMusique.Electro && produit.field_musique.value === 'Electro') ||
-      (filtresMusique.Celtique && produit.field_musique.value === 'Celtique');
+      (filtresMusique.Pop && produit.categories.some(cat => cat.name === 'Pop')) ||
+      (filtresMusique.Rock && produit.categories.some(cat => cat.name === 'Rock')) ||
+      (filtresMusique.Reggae && produit.categories.some(cat => cat.name === 'Reggae')) ||
+      (filtresMusique.Electro && produit.categories.some(cat => cat.name === 'Electro')) ||
+      (filtresMusique.Celtique && produit.categories.some(cat => cat.name === 'Celtique'));
 
-    const sceneMatch =
-      (filtresScene["Horizon Sonore"] && produit.field_scene.value === "Horizon Sonore") ||
-      (filtresScene["Cybergroove"] && produit.field_scene.value === "Cybergroove") ||
-      (filtresScene["Reggae Vibes Haven"] && produit.field_scene.value === "Reggae Vibes Haven") ||
-      (filtresScene["Guitares en fusion"] && produit.field_scene.value === "Guitares en fusion") ||
-      (filtresScene["Terre d'Emeraude"] && produit.field_scene.value === "Terre d'Emeraude");
+      const sceneMatch =
+  (filtresScene["Horizon Sonore"] && produit.tags.some(tag => tag.name === "Scène \"Horizon Sonore\"")) ||
+  (filtresScene["Cybergroove"] && produit.tags.some(tag => tag.name === "Scène \"Cybergroove\"")) ||
+  (filtresScene["Reggae Vibes Haven"] && produit.tags.some(tag => tag.name === "Scène \"Reggae Vibes Haven\"")) ||
+  (filtresScene["Guitares en fusion"] && produit.tags.some(tag => tag.name === "Scène \"Guitares en fusion\"")) ||
+  (filtresScene["Terre d'Emeraude"] && produit.tags.some(tag => tag.name === "Scène \"Terre d'Emeraude\""));
 
-    return (
-      
-      (musiqueMatch || Object.values(filtresMusique).every(value => !value)) &&
-      (filtreDate === null || new Date(produit.field_date_du_concert).toLocaleDateString('fr-FR') === new Date(filtreDate).toLocaleDateString('fr-FR')) &&
-      (sceneMatch || Object.values(filtresScene).every(value => !value))
-    );
+  const dateMatch =
+  (filtresDate["21 Juin 2024"] && produit.categories.some(cat => cat.name === "Le Vendredi 21 Juin 2024")) ||
+  (filtresDate["22 Juin 2024"] && produit.categories.some(cat => cat.name === "Le Samedi 22 Juin 2024")) ||
+  (filtresDate["23 Juin 2024"] && produit.categories.some(cat => cat.name === "Le Dimanche 23 Juin 2024"));
+
+return (
+  (musiqueMatch || Object.values(filtresMusique).every(value => !value)) &&
+  (dateMatch || Object.values(filtresDate).every(value => !value)) &&
+  (sceneMatch || Object.values(filtresScene).every(value => !value))
+);
+
+    
   });
 
   const handleCheckboxChange = (styleMusique) => {
@@ -78,19 +92,23 @@ function ListeDeProduits() {
     }));
   };
 
+  const handleCheckboxChangeDate = (dateConcert) => {
+    setFiltresDate((prevFiltresDate) => ({
+      ...prevFiltresDate,
+      [dateConcert]: !prevFiltresDate[dateConcert],
+    }));
+  };
+
   const toggleFiltre = () => {
     setFiltreOuvert(!filtreOuvert);
   };
 
- 
   return (
     <>
       <button onClick={toggleFiltre}>{filtreOuvert ? "Fermer le filtre" : "Ouvrir le filtre"}</button>
 
       {filtreOuvert && (
         <div className="filtres-container">
-          
-
           <div>
             <label>Filtrer par musique:</label>
             <div>
@@ -137,13 +155,19 @@ function ListeDeProduits() {
             </div>
           </div>
 
-          <label htmlFor="filtreDate">Filtrer par date:</label>
-          <input
-            type="date"
-            id="filtreDate"
-            value={filtreDate || ''}
-            onChange={(e) => setFiltreDate(e.target.value)}
-          />
+          <label>Filtrer par date de concert:</label>
+<div>
+  {Object.keys(filtresDate).map((dateConcert) => (
+    <label key={dateConcert}>
+      {dateConcert}
+      <input
+        type="checkbox"
+        checked={filtresDate[dateConcert]}
+        onChange={() => handleCheckboxChangeDate(dateConcert)}
+      />
+    </label>
+  ))}
+</div>
 
           <label>Filtrer par scène:</label>
           <div>
@@ -161,26 +185,25 @@ function ListeDeProduits() {
         </div>
       )}
 
-    
-
       <div className="cards-container">
         {produitsFiltres.map((produit, index) => {
-          const image = require(`./assets/imagesEtLogo/images/${produit.title.replace(/ /g, '_')}.jpg`).default;
+          const image = produit.images.length > 0 ? produit.images[0].src : '';
 
           return (
             <div key={index} className="card">
               <div className="music-note">🎵</div>
-              <h2 className="pink">{produit.title}</h2>
-              <p dangerouslySetInnerHTML={{ __html: produit.body.value }}></p>
-              <h2 className="pink">{produit.field_name.value}</h2>
-              <p dangerouslySetInnerHTML={{ __html: produit.field_description.value }}></p>
-              <p className="fw-bold">Musique: {produit.field_musique.value}</p>
-              {/* <p className="fw-bold">Prix du billet : {produit.field_price} €</p> */}
-              <img src={image} alt={produit.title} />
-              <img src={`http://localhost/drupal${produit.field_imageproduit}`} alt={produit.title} />
-              <p className="fw-bold">Le {new Date(produit.field_date_du_concert).toLocaleDateString('fr-FR')} à {new Date(produit.field_date_du_concert).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }).replace(/:/g, 'h')}</p>
-              <p className="fw-bold">Scène: {produit.field_scene.value}</p>
-              <button>
+              <h2 className="pink">{produit.name}</h2>
+              <img src={image} alt={produit.name} />
+              {/* Vous devrez peut-être ajuster les champs ci-dessous en fonction de la structure réelle de vos données */}
+              <p dangerouslySetInnerHTML={{ __html: produit.short_description }}></p>
+              <p dangerouslySetInnerHTML={{ __html: produit.description }}></p>
+              <p className="fw-bold">Musique: {produit.categories.map(cat => cat.name).join(', ')}</p>
+              {/* <p className="fw-bold">Prix du billet : {produit.price} €</p> */}
+             
+              {/* Vous devrez peut-être ajuster les champs ci-dessous en fonction de la structure réelle de vos données */}
+              {/*<p className="fw-bold">Le {new Date(produit.date_created).toLocaleDateString('fr-FR')} à {new Date(produit.date_created).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }).replace(/:/g, 'h')}</p>*/}
+              <p className="fw-bold">Scène: {produit.tags && produit.tags.length > 0 ? produit.tags.map(tag => tag.name).join(', ') : 'Non spécifié'}</p>
+              <button className='bouton-billetterie'>
                 <Link to="/billetterie" className="lien-bouton white">
                   Voir les Pass sur la billetterie
                 </Link>
@@ -194,3 +217,4 @@ function ListeDeProduits() {
 }
 
 export default ListeDeProduits;
+ 

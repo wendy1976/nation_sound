@@ -135,7 +135,7 @@ const MyMap = () => {
 
 {isTabletOrMobile && (
   <div style={{ marginBottom: '10px' }}>
-    <select className="form-select" onChange={(e) => handleCategoryFilter(e.target.value)}>
+    <select className="form-select bgPink white" onChange={(e) => handleCategoryFilter(e.target.value)}>
       <option value="Scène">Scènes</option>
       <option value="Restaurant">Restaurants</option>
       <option value="Bar">Bars</option>
