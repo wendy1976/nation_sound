@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Faq from './Faq';
 import Layout from './Layout';
+import ScrollToTopButton from './ScrollToTopButton';
 import InfosImage from './assets/imagesEtLogo/images/Infos.jpg';
 import accessibiliteImage from './assets/imagesEtLogo/images/accessibilite.jpg';
 import barImage from './assets/imagesEtLogo/images/bar.jpg';
@@ -194,7 +195,10 @@ function Infos() {
                 <h2 className='text-center pink mb-0 mt-3 pt-0 pb-5'>FAQ</h2>
             <Faq /> {/* Intégrez votre composant FAQ ici */}
             </section>
+            {/* Ajoutez le bouton de retour en haut de la page */}
+        <ScrollToTopButton />
         </Layout>
+
     );
 }
 

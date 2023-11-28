@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Header from './Header';
 
 import ListeDeProduits from './ListeDeProduits';
+import ScrollToTopButton from './ScrollToTopButton';
 
 
 
@@ -18,6 +19,7 @@ function Concerts() {
         <h2 className="text-center pink mb-0 mt-3 pt-0 pb-5 boutique">Le festival Nation Sound aura lieu les 21, 22 et 23 Juin 2024</h2>   
         <ListeDeProduits />
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 }

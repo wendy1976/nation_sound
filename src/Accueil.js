@@ -155,11 +155,10 @@ function Accueil() {
       <div className="row">
         <div className="col-12 col-md-6">
           <div className="newsletter-section">
-            <h3>Inscrivez-vous à notre newsletter</h3>
-            <form action="/subscribe" method="post">
-              <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required />
-              <button type="submit">S'abonner <MdEmail /></button>
-            </form>
+          <h3>Inscrivez-vous à notre newsletter</h3>
+          <Link to="/newsletter">
+            <button type="button">S'abonner <MdEmail /></button>
+          </Link>
           </div>
         </div>
         <div className="col-12 col-md-6"style={{ textAlign: 'center' }} >
