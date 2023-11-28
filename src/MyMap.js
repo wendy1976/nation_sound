@@ -3,6 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import React from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
 
 // Import de mes icones pour la carte
 import barIcon from './assets/imagesEtLogo/images/icone_bar.png';
@@ -93,6 +94,13 @@ const MyMap = () => {
 
   return (
     <>
+    {/* Ajoutez le bouton ou le lien pour revenir à l'accueil */}
+    <div className="go-to-home-button">
+        {/* Si vous utilisez react-router-dom, vous pouvez utiliser le composant Link */}
+        <Link to="/" className="link-style">
+          Retour à l'accueil
+        </Link>
+      </div>
     <div className="">
     {isDesktopOrLaptop && (
       <div style={{ display: 'flex', gap: '10px' }}>
@@ -131,6 +139,7 @@ const MyMap = () => {
           </span>
         </button>
       </div>
+      
     )}
 
 {isTabletOrMobile && (

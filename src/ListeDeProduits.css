@@ -133,11 +133,24 @@
   }
 
   /* Style de mon filtre */
-.filtres-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+  .filtres-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .categorie-filtre {
+    margin-bottom: 20px;
+  }
+  
+  .checkboxes-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  label {
+    margin-right: 10px;
+  }
 
 /* Style pour les écrans plus petits (ajustez les valeurs en conséquence) */
 @media screen and (max-width: 600px) {

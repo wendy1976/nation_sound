@@ -6,6 +6,8 @@ import ArtistCard from './ArtistCard';
 import CarouselComponent from './CarouselComponent';
 import Footer from './Footer';
 import Header from './Header';
+import ScrollToTopButton from './ScrollToTopButton';
+import ServicesSection from './ServicesSection';
 import miniCarteImage from './assets/imagesEtLogo/images/miniCarte.png';
 
 
@@ -148,6 +150,7 @@ function Accueil() {
           </div>
         </div>
       </div>
+      <ServicesSection />
       <div>
       <div className="row">
         <div className="col-12 col-md-6">
@@ -177,6 +180,8 @@ function Accueil() {
     </div>
      
       <Footer />
+      {/* Ajoutez le bouton de retour en haut de la page */}
+      <ScrollToTopButton />
     </div>
   );
 }

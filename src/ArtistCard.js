@@ -77,6 +77,7 @@ function ArtistCard(props) {
     }
 
     
+    
     return (
         <div className="artist-card bgWhite" style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '20px' }}>
             <div className="row">
@@ -91,8 +92,8 @@ function ArtistCard(props) {
                     <h3>{props.name}</h3>
                     <p>Date: {props.dateConcert}</p>
                     <p>Scène: {props.scene}</p>
-                    <Link to={"/artistPage"} style={{ textDecoration: 'none' }}>
-                        <button>Voir plus <span style={{ fontWeight: 'bold', color: 'red' }}>+</span></button>
+                    <Link to="/concerts">
+                        <button>Voir les concerts</button>
                     </Link>
                 </div>
             </div>

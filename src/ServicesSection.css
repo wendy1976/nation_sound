@@ -1,0 +1,26 @@
+.services-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #007bff;
+  }
+  
+  .service-card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    background-color: #E6E16D;
+  }
+  

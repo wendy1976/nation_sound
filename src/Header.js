@@ -1,10 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
-import { Dropdown, Modal, Nav, Navbar } from 'react-bootstrap';
+import { Dropdown, Nav, Navbar } from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 //import { Link } from 'react-scroll';
 import { Link } from 'react-router-dom';
-import Cart from './Cart';
 import Logo from './assets/imagesEtLogo/images/logo1.png';
 
 
@@ -102,7 +101,7 @@ function Header() {
         </Navbar.Collapse>
       </Navbar>
 
-      <Modal show={isCartOpen} onHide={handleClose} backdrop="static">
+      {/*<Modal show={isCartOpen} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Mon panier</Modal.Title>
         </Modal.Header>
@@ -114,7 +113,7 @@ function Header() {
           Fermer
           </button>
         </Modal.Footer>
-        </Modal>
+        </Modal> */}
     </div>
   );
 }
