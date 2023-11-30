@@ -1,3 +1,5 @@
+import { faMusic } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ListeDeProduits.css';
@@ -195,7 +197,7 @@ function ListeDeProduits() {
 
           return (
             <div key={index} className="card">
-              <div className="music-note">🎵</div>
+              <FontAwesomeIcon icon={faMusic} className="music-note pink" />
               <h2 className="pink">{produit.name}</h2>
               <img src={image} alt={produit.name} />
               {/* Vous devrez peut-être ajuster les champs ci-dessous en fonction de la structure réelle de vos données */}

@@ -1,8 +1,7 @@
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { createCanvas } from 'canvas';
-import JsBarcode from 'jsbarcode';
 import jsPDF from 'jspdf';
+import QRCode from 'qrcode';
 import React, { useEffect, useState } from 'react';
 import Layout from './Layout';
 import logoImage from './assets/imagesEtLogo/images/logo1.png';
@@ -140,24 +139,18 @@ const Billetterie = () => {
   pdf.setTextColor(255, 74, 147);
   pdf.text(`Total: ${calculerTotal()} €`, 20, yPosition + 10);
 
-  // Générez un code-barres fictif (utilisez une chaîne unique, comme la date du festival)
-  const codeBarreData = '2024-06-21'; // Utilisez une valeur pertinente à votre cas
+  // Générez un QR Code fictif (utilisez une chaîne unique, comme la date du festival)
+const qrCodeData = '2024-06-21'; // Utilisez une valeur pertinente à votre cas
 
-  // Créez un canvas pour le code-barres
-  const canvas = createCanvas();
-  JsBarcode(canvas, codeBarreData, {
-    format: 'CODE128',
-    displayValue: false,
-    height: 30,
-  });
+// Générez le QR Code et convertissez-le en URL de données
+QRCode.toDataURL(qrCodeData, { errorCorrectionLevel: 'H' }, function (err, url) {
+  if (err) throw err
 
-  // Convertissez le canvas en URL de données
-  const dataUrl = canvas.toDataURL();
-
-  // Ajoutez l'image du code-barres au PDF
-  pdf.addImage(dataUrl, 'PNG', 150, yPosition + 20, 50, 20);
+  // Ajoutez l'image du QR Code au PDF
+  pdf.addImage(url, 'PNG', 150, yPosition + 20, 50, 50);
 
   pdf.save('billet_pass.pdf');
+});
 };
   
   
@@ -178,21 +171,21 @@ const Billetterie = () => {
               <h2 className='pink'>Votre panier a bien été validé!</h2>
             ) : (
               <>
-                <h2>Panier</h2>
+                <h2 className='pink'>🧺  Panier</h2>
                 <ul>
                   {Object.values(panier).map((item) => (
                     item.quantite > 0 && (
                       <li key={item.id}>
                         {item.name} - Quantité: {item.quantite} - Prix: {item.price * item.quantite} € TTC
-                        <button onClick={() => supprimerDuPanier(item)}>Supprimer</button>
+                        <button className="btn btn-sm mr-2 pink fw-bold" onClick={() => supprimerDuPanier(item)}>Supprimer</button>
                       </li>
                     )
                   ))}
                 </ul>
-                <p>Total: {calculerTotal()} €</p>
-                <button onClick={reinitialiserPanier}>Réinitialiser le panier</button>
-                <button onClick={fermerPanier}>Fermer le panier</button>
-                <button onClick={validerPanier}>Valider le panier</button>
+                <p className='fw-bold'>Total: {calculerTotal()} € TTC</p>
+                <button className="btn btn-sm mr-2 pink fw-bold" onClick={reinitialiserPanier}>Réinitialiser le panier</button>
+                <button className="btn btn-sm mr-2 pink fw-bold" onClick={fermerPanier}>Fermer le panier</button>
+                <button className="btn btn-sm pink fw-bold" onClick={validerPanier}>Valider le panier</button>
               </>
             )}
           </div>
@@ -207,10 +200,11 @@ const Billetterie = () => {
 
       <div className="container">
         <h1 className="text-center pink mb-0 mt-3 pt-0 pb-5">Billetterie</h1>
+        <p className="text-center pink mb-0 mt-3 pt-0 pb-5">Pour information, ce site étant fictif, vous n'avez pas d'options de paiement, vous validez votre panier, et votre billet de concert se télécharge automatiquement.</p>
         {passes.map((pass) => (
           <div key={pass.id} className="row border mb-4 p-3 bgYellow">
             <div className="col-md-3">
-              <img src={Image} alt="" className="img-fluid" />
+              <img src={Image} alt="" className="img-fluid animate__animated animate__swing animate__slow	2s animate__repeat-3" />
             </div>
             <div className="col-md-9">
               <h3 className='pink'>{pass.name}</h3>

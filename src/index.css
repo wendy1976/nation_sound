@@ -1,5 +1,18 @@
-@import url(https://fonts.google.com/specimen/Fjalla+One);
-@import url(https://fonts.google.com/?query=Droid+Serif);
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+
+body {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Utilisation de Poppins par défaut, sinon Segoe UI, Tahoma, Geneva, Verdana ou une police sans-serif générique */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Quicksand', 'Arial Rounded MT Bold', Arial, sans-serif;
+  /* Utilisation de Quicksand par défaut, sinon Arial Rounded MT Bold, Arial ou une police sans-serif générique */
+  font-weight: bold;
+}
 
 :root {
     --white: #F6F6FF;
@@ -69,18 +82,36 @@
 
 
 
-/*le positionnement de mon bouton voir la boutique au milieu du slide */
-#laBilletterie {
-  top: -460px;
-  position: relative;
-  left: 43%; 
-  background-color: #64be8b;
+/* CSS pour les écrans d'ordinateur */
+@media (min-width: 992px) {
+  #laBilletterie {
+    top: -460px;
+    position: relative;
+    left: 43%; 
+    background-color: #64be8b;
+  }
 }
 
-/*effet de survol mon bouton voir la boutique au milieu du slide */    
+/* CSS pour les écrans mobiles */
+@media (max-width: 991px) {
+  #laBilletterie {
+    top: -150px; /* Ajustez cette valeur en fonction de vos besoins */
+    position: relative;
+    left: 30%; /* Ajustez cette valeur en fonction de vos besoins */
+    background-color: #64be8b;
+    width: 150px; /* Ajustez cette valeur en fonction de vos besoins */
+    height: 35px; /* Ajustez cette valeur en fonction de vos besoins */
+    font-size: 12px;
+  }
+}
+
+
+/*effet de survol de mon bouton voir "billetterie" au milieu du slide */    
 #laBilletterie:hover {
   color:#D93DA5;
 }  
+
+
 
 .product-card img {
   width: 100%;
@@ -105,6 +136,10 @@ body {
   background-color: #F6F6FF; /* Exemple de couleur d'arrière-plan */
   
   /* Autres styles globaux */
+}
+/* position de "informations et faq* dans le menu de mon header*/
+.custom-margin {
+  margin-bottom: -10px; /* Ajustez la valeur en fonction de vos besoins */
 }
 
 /* Couleur de mes icones de réseaux sociaux dans le footer */
@@ -180,26 +215,42 @@ body {
 }
 
 .faq-item {
-  /* Styles pour chaque élément de FAQ (question + réponse) */
-  /* Par exemple, arrière-plan, marges, bordures, etc. */
+  max-width: 70%;
+  margin: 0 auto; /* Centrer l'élément horizontalement */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Ajout de remplissage pour l'espace à l'intérieur de la boîte d'ombre */
+  margin-bottom: 20px; /* Ajout d'une marge en bas pour éviter le chevauchement */
+  /* Autres styles pour chaque élément de FAQ */
 }
+
 
 .faq-question {
   background-color: #64be8b;
+  font-size: 1.2em !important; /* Ajout de !important pour prioriser cette règle */
   color: #D93DA5;
   width: 70%;
   margin: 0 auto;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 1.5em;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
 }
+
+.faq-question:hover {
+  background-color: #E6E16D; /* Couleur différente au survol */
+}
+
 
 .faq-answer {
   width: 70%;
   margin: 0 auto;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   color:#1F1F1F;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  transition: text-decoration 0.3s ease;
 }
 /* Essai d'ajustement du bouton panier */
 

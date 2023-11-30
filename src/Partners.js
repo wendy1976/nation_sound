@@ -1,3 +1,4 @@
+import 'animate.css';
 import React from 'react';
 import Layout from './Layout';
 import logoEcoEnergy from './assets/imagesEtLogo/images/logo_ecoEnergy.jpg';
@@ -26,7 +27,7 @@ const Partners = () => {
           {partnerLogos.map((logo, index) => (
             <div className="col-md-4 col-6" key={index}>
               <div className="partner">
-                <img src={logo} alt={`Partenaire ${index + 1}`} className="img-fluid mb-4 me-4" />
+                <img src={logo} alt={`Partenaire ${index + 1}`} className="img-fluid mb-4 me-4 animate__animated animate__tada animate__slow animate__repeat-3" />
               </div>
             </div>
           ))}

@@ -9,6 +9,7 @@ import Infos from './Infos';
 import LegalNotice from './LegalNotice';
 import MyMap from './MyMap';
 import Newsletter from './Newsletter';
+import PageProduit from './PageProduit';
 import Partners from './Partners';
 
 
@@ -28,6 +29,7 @@ function AppRoutes() {
       <Route path="/legalNotice" element={<LegalNotice />} />
       <Route path="/billetterie" element={<Billetterie/>} />
       <Route path="/artistPage" element={<ArtistPage />} />
+      <Route path="/produit/:id" component={<PageProduit />} />
       <Route path="/myMap" element={<MyMap />} />
     
     </Routes>

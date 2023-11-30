@@ -85,7 +85,7 @@
     margin: 10px;
     width: 350px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: var(--lightgreen);
+    background-color: var(--yellow);
     transition: all 0.3s ease;
     
   }
@@ -97,21 +97,30 @@
 
   .music-note {
     position: absolute;
-    font-size: 1em;
-    animation: move 5s infinite;
-    color: #D93DA5 !important;
+    font-size: 1.2em;
+    right: 35px;
+    animation: dance 5s infinite;   
     
-  }
-
+  }  
   
-  
-  @keyframes move {
-    0% { transform: translate(0, 0); }
-    25% { transform: translate(200px, 0); }
-    50% { transform: translate(100px, 200px); }
-    75% { transform: translate(0, 400px); }
-    100% { transform: translate(300px, 0); }
+  @keyframes dance {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(20px, -20px);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    75% {
+      transform: translate(-20px, -20px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
   }
+  
   
   .card h2 {
     margin-top: 0;
