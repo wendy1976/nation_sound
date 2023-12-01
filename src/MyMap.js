@@ -1,22 +1,20 @@
-import L from 'leaflet'; // Importez la bibliothèque Leaflet
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 
-// Import de mes icones pour la carte
-import barIcon from './assets/imagesEtLogo/images/icone_bar.png';
-import campingIcon from './assets/imagesEtLogo/images/icone_camping.png';
-import restaurantIcon from './assets/imagesEtLogo/images/icone_restaurant.png';
-import sceneIcon from './assets/imagesEtLogo/images/icone_scene.png';
-import wcIcon from './assets/imagesEtLogo/images/icone_wc.png';
-// Import de mes images pour mes pop-up
 import barImage from './assets/imagesEtLogo/images/bar1.png';
 import campingImage from './assets/imagesEtLogo/images/camping1.png';
 import djImage from './assets/imagesEtLogo/images/dj.png';
 import foodtruckImage from './assets/imagesEtLogo/images/foodtruck.png';
 import guitareImage from './assets/imagesEtLogo/images/guitare_rock.png';
+import barIcon from './assets/imagesEtLogo/images/icone_bar.png';
+import campingIcon from './assets/imagesEtLogo/images/icone_camping.png';
+import restaurantIcon from './assets/imagesEtLogo/images/icone_restaurant.png';
+import sceneIcon from './assets/imagesEtLogo/images/icone_scene.png';
+import wcIcon from './assets/imagesEtLogo/images/icone_wc.png';
 import celtiqueImage from './assets/imagesEtLogo/images/musique_celtique.png';
 import popImage from './assets/imagesEtLogo/images/musique_pop.png';
 import reggaeImage from './assets/imagesEtLogo/images/musique_reggae.png';
@@ -28,10 +26,10 @@ import wc3Image from './assets/imagesEtLogo/images/wc3.png';
 
 const MyMap = () => {
   const cascadeCoordinates = [48.8621, 2.2526];
-  // Rajout pour le filtre par catégorie
-  const [selectedCategory, setSelectedCategory] = React.useState(null);
+  const [isGeolocationEnabled, setIsGeolocationEnabled] = useState(false);
+  const mapRef = useRef(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-  // Définir des icônes Leaflet pour chaque catégorie
   const barIconLeaflet = new L.Icon({
     iconUrl: barIcon,
     iconRetinaUrl: barIcon,
@@ -77,101 +75,132 @@ const MyMap = () => {
     { category: 'wc', coordinates: [48.8640, 2.2427], icon: wcIconLeaflet, name: 'Toilettes 3',popupContent: <div dangerouslySetInnerHTML={{ __html: "Toilettes pour Homme & Femme, et Handicapés" }} />, image: wc3Image },
     { category: 'Camping', coordinates: [48.8565, 2.2474], icon: campingIconLeaflet, name: 'Camping « Nation Sound »',popupContent: <div dangerouslySetInnerHTML={{ __html: " « <strong>Le camping du festival</strong> » est gratuit pour tous les festivaliers ayant acheté le PASS 2 Jours ou 3 Jours." }} />, image: campingImage },
   ];
-  // pour les medias queries du filtre
+
   const isDesktopOrLaptop = useMediaQuery({ query: '(min-device-width: 1224px)' });
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   const filteredLocations = selectedCategory
-    ? locations.filter(location => location.category === selectedCategory)
+    ? locations.filter((location) => location.category === selectedCategory)
     : locations;
 
   const handleCategoryFilter = (category) => {
-    setSelectedCategory(category === selectedCategory ? null : category);
+    setSelectedCategory((prevCategory) => (prevCategory === category ? null : category));
   };
 
-  
-  
+  const resetFilter = () => {
+    setSelectedCategory(null);
+  };
+
+  const toggleGeolocation = () => {
+    if (mapRef.current) {
+      if (isGeolocationEnabled) {
+        mapRef.current.stopLocate();
+      } else {
+        mapRef.current.locate({ setView: true, maxZoom: 16 });
+      }
+      setIsGeolocationEnabled((prev) => !prev);
+    } else {
+      console.error('Map reference is null.');
+    }
+  };
 
   return (
     <>
-    {/* Ajoutez le bouton ou le lien pour revenir à l'accueil */}
-    <div className="go-to-home-button">
-        {/* Si vous utilisez react-router-dom, vous pouvez utiliser le composant Link */}
+      <div className="go-to-home-button">
         <Link to="/" className="link-style">
           Retour à l'accueil
         </Link>
       </div>
-    <div className="">
-    {isDesktopOrLaptop && (
-      <div style={{ display: 'flex', gap: '10px' }}>
-        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Scène')}>
-          <span style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={sceneIcon} alt="Scène" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
-            Scènes
-          </span>
-        </button>
+      <div className="">
+        {isDesktopOrLaptop && (
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Scène')}>
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <img src={sceneIcon} alt="Scène" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+                Scènes
+              </span>
+            </button>
 
-        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Restaurant')}>
-          <span style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={restaurantIcon} alt="Restaurant" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
-            Restaurants
-          </span>
-        </button>
+            <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Restaurant')}>
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <img src={restaurantIcon} alt="Restaurant" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+                Restaurants
+              </span>
+            </button>
 
-        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Bar')}>
-          <span style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={barIcon} alt="Bar" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
-            Bars
-          </span>
-        </button>
+            <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Bar')}>
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <img src={barIcon} alt="Bar" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+                Bars
+              </span>
+            </button>
 
-        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('wc')}>
-          <span style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={wcIcon} alt="WC" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
-            WC
-          </span>
-        </button>
+            <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('wc')}>
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <img src={wcIcon} alt="WC" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+                WC
+              </span>
+            </button>
 
-        <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Camping')}>
-          <span style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={campingIcon} alt="Camping" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
-            Camping
-          </span>
-        </button>
-      </div>
-      
-    )}
+            <button className="d-flex align-items-center" onClick={() => handleCategoryFilter('Camping')}>
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                <img src={campingIcon} alt="Camping" style={{ width: '30px', height: '30px', marginRight: '5px' }} />
+                Camping
+              </span>
+            </button>
+
+            <button className="d-flex align-items-center" onClick={resetFilter}>
+              Réinitialiser le filtre
+            </button>
+
+            <button className="d-flex align-items-center" onClick={toggleGeolocation}>
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                {isGeolocationEnabled ? 'Désactiver la géolocalisation' : 'Activer la géolocalisation'}
+              </span>
+            </button>
+
+          </div>
+        )}
 
 {isTabletOrMobile && (
   <div style={{ marginBottom: '10px' }}>
-    <select className="form-select bgPink white" onChange={(e) => handleCategoryFilter(e.target.value)}>
-      <option value="Scène">Scènes</option>
-      <option value="Restaurant">Restaurants</option>
-      <option value="Bar">Bars</option>
-      <option value="wc">WC</option>
-      <option value="Camping">Camping</option>
-    </select>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <select className="form-select bgPink white" onChange={(e) => handleCategoryFilter(e.target.value)}>
+        <option value="">Sélectionner une catégorie</option>
+        <option value="Scène">Scènes</option>
+        <option value="Restaurant">Restaurants</option>
+        <option value="Bar">Bars</option>
+        <option value="wc">WC</option>
+        <option value="Camping">Camping</option>
+      </select>
+      <div>
+        <button className="btn bgPink white d-inline-block" onClick={resetFilter}>
+          Réinitialiser le filtre
+        </button>
+      </div>
+    </div>
   </div>
 )}
 
-    
+<button className="btn bgPink white d-inline-block" onClick={toggleGeolocation}>
+  {isGeolocationEnabled ? 'Désactiver la géolocalisation' : 'Activer la géolocalisation'}
+</button>
 
-      <MapContainer center={cascadeCoordinates} zoom={15} style={{ height: '500px', width: '100%' }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
+        <MapContainer center={cascadeCoordinates} zoom={15} style={{ height: '500px', width: '100%' }} whenCreated={(mapInstance) => (mapRef.current = mapInstance)}>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 
-        {filteredLocations.map((location, index) => (
-          <Marker key={index} position={location.coordinates} icon={location.icon}>
-            <Popup>
-              <div>
-                <h3 className='pink'>{location.name}</h3>
-                <p><strong>Catégorie:</strong> {location.category}</p>
-                <p>{location.popupContent}</p>
-                <img src={location.image} alt={location.category} style={{ width: '45px', height: '45px' }} />
-              </div>
-            </Popup>
+          {filteredLocations.map((location, index) => (
+            <Marker key={index} position={location.coordinates} icon={location.icon}>
+              <Popup>
+                <div>
+                  <h3 className="pink">{location.name}</h3>
+                  <p>
+                    <strong>Catégorie:</strong> {location.category}
+                  </p>
+                  <p>{location.popupContent}</p>
+                  <img src={location.image} alt={location.category} style={{ width: '45px', height: '45px' }} />
+                </div>
+              </Popup>
             </Marker>
           ))}
         </MapContainer>
@@ -181,7 +210,4 @@ const MyMap = () => {
 };
 
 export default MyMap;
-
-
-  
-
+ 
