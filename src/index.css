@@ -111,7 +111,9 @@ h1, h2, h3, h4, h5, h6 {
   color:#D93DA5;
 }  
 
-
+.bgNews:hover{
+  background-color:#7BDCB5;
+}
 
 .product-card img {
   width: 100%;
