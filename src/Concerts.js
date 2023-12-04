@@ -7,9 +7,6 @@ import Header from './Header';
 import ListeDeProduits from './ListeDeProduits';
 import ScrollToTopButton from './ScrollToTopButton';
 
-
-
-
 //Appels de mes composants pour ma page Concerts et programmation
 function Concerts() {
   return (
