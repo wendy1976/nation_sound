@@ -5,6 +5,7 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 
+// Import des images et icônes
 import barImage from './assets/imagesEtLogo/images/bar1.png';
 import campingImage from './assets/imagesEtLogo/images/camping1.png';
 import djImage from './assets/imagesEtLogo/images/dj.png';
@@ -25,11 +26,15 @@ import wc2Image from './assets/imagesEtLogo/images/wc2.png';
 import wc3Image from './assets/imagesEtLogo/images/wc3.png';
 
 const MyMap = () => {
+  // Coordonnées de la cascade
   const cascadeCoordinates = [48.8621, 2.2526];
  
+  // Référence à l'instance de la carte
   const mapRef = useRef(null);
+  // État pour stocker la catégorie sélectionnée
   const [selectedCategory, setSelectedCategory] = useState(null);
 
+  // Icônes pour les différentes catégories
   const barIconLeaflet = new L.Icon({
     iconUrl: barIcon,
     iconRetinaUrl: barIcon,
@@ -60,6 +65,7 @@ const MyMap = () => {
     iconSize: [35, 35],
   });
 
+
   const locations = [
     { category: 'Scène', coordinates: [48.86331, 2.24632], icon: sceneIconLeaflet, name: 'Horizon Sonore', popupContent: <div dangerouslySetInnerHTML={{ __html: "Les concerts de musique « <strong>Pop</strong> » se dérouleront sur cette scène." }} />, image: popImage },
     { category: 'Scène', coordinates: [48.86059, 2.24405], icon: sceneIconLeaflet, name: 'Reggae Vibes Haven', popupContent: <div dangerouslySetInnerHTML={{ __html: "Les concerts de musique « <strong>Reggae</strong> » se dérouleront sur cette scène." }} />, image: reggaeImage },
@@ -76,17 +82,21 @@ const MyMap = () => {
     { category: 'Camping', coordinates: [48.8565, 2.2474], icon: campingIconLeaflet, name: 'Camping « Nation Sound »',popupContent: <div dangerouslySetInnerHTML={{ __html: " « <strong>Le camping du festival</strong> » est gratuit pour tous les festivaliers ayant acheté le PASS 2 Jours ou 3 Jours." }} />, image: campingImage },
   ];
 
+  // Utilisation du hook de réactivité pour détecter la taille de l'écran
   const isDesktopOrLaptop = useMediaQuery({ query: '(min-device-width: 1224px)' });
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
+  // Filtrage des lieux en fonction de la catégorie sélectionnée
   const filteredLocations = selectedCategory
     ? locations.filter((location) => location.category === selectedCategory)
     : locations;
 
+  // Gérer le changement de catégorie  
   const handleCategoryFilter = (category) => {
     setSelectedCategory((prevCategory) => (prevCategory === category ? null : category));
   };
 
+  // Réinitialiser le filtre
   const resetFilter = () => {
     setSelectedCategory(null);
   };
@@ -140,56 +150,58 @@ const MyMap = () => {
             <button className="d-flex align-items-center" onClick={resetFilter}>
               Réinitialiser le filtre
             </button>
-
-            
-
           </div>
         )}
 
-{isTabletOrMobile && (
-  <div style={{ marginBottom: '10px' }}>
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      <select className="form-select bgPink white" onChange={(e) => handleCategoryFilter(e.target.value)}>
-        <option value="">Sélectionner une catégorie</option>
-        <option value="Scène">Scènes</option>
-        <option value="Restaurant">Restaurants</option>
-        <option value="Bar">Bars</option>
-        <option value="wc">WC</option>
-        <option value="Camping">Camping</option>
-      </select>
-      <div>
-        <button className="btn bgPink white d-inline-block" onClick={resetFilter}>
-          Réinitialiser le filtre
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
-
-
-        <MapContainer center={cascadeCoordinates} zoom={15} style={{ height: '500px', width: '100%' }} whenCreated={(mapInstance) => (mapRef.current = mapInstance)}>
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
-
-          {filteredLocations.map((location, index) => (
-            <Marker key={index} position={location.coordinates} icon={location.icon}>
-              <Popup>
+          {isTabletOrMobile && (
+            // Affichage pour les tablettes et mobiles
+            <div style={{ marginBottom: '10px' }}>
+              {/* Conteneur de sélection de catégorie */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {/* Sélecteur de catégorie */}
+                <select className="form-select bgPink white" onChange={(e) => handleCategoryFilter(e.target.value)}>
+                  <option value="">Sélectionner une catégorie</option>
+                  <option value="Scène">Scènes</option>
+                  <option value="Restaurant">Restaurants</option>
+                  <option value="Bar">Bars</option>
+                  <option value="wc">WC</option>
+                  <option value="Camping">Camping</option>
+                </select>
+                {/* Bouton pour réinitialiser le filtre */}
                 <div>
-                  <h3 className="pink">{location.name}</h3>
-                  <p>
-                    <strong>Catégorie:</strong> {location.category}
-                  </p>
-                  <p>{location.popupContent}</p>
-                  <img src={location.image} alt={location.category} style={{ width: '45px', height: '45px' }} />
+                  <button className="btn bgPink white d-inline-block" onClick={resetFilter}>
+                    Réinitialiser le filtre
+                  </button>
                 </div>
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-      </div>
+              </div>
+            </div>
+          )}
+
+          {/* Carte avec les marqueurs et popups */}
+          <MapContainer center={cascadeCoordinates} zoom={15} style={{ height: '500px', width: '100%' }} whenCreated={(mapInstance) => (mapRef.current = mapInstance)}>
+            {/* Couche de tuiles OpenStreetMap */}
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
+
+            {/* Affichage des marqueurs et popups pour les emplacements filtrés */}
+            {filteredLocations.map((location, index) => (
+              <Marker key={index} position={location.coordinates} icon={location.icon}>
+                <Popup>
+                  {/* Contenu de la popup */}
+                  <div>
+                    <h3 className="pink">{location.name}</h3>
+                    <p>
+                      <strong>Catégorie:</strong> {location.category}
+                    </p>
+                    <p>{location.popupContent}</p>
+                    <img src={location.image} alt={location.category} style={{ width: '45px', height: '45px' }} />
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+          </div>
     </>
   );
 };
 
 export default MyMap;
- 

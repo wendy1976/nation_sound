@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 import './ListeDeProduits.css';
 
 function ListeDeProduits() {
+  // État pour stocker la liste des produits
   const [produits, setProduits] = useState([]);
+
+  // États pour les filtres de musique, date et scène
   const [filtresMusique, setFiltresMusique] = useState({
     Pop: false,
     Rock: false,
@@ -13,13 +16,11 @@ function ListeDeProduits() {
     Electro: false,
     Celtique: false,
   });
-
   const [filtresDate, setFiltresDate] = useState({
     "21 Juin 2024": false,
     "22 Juin 2024": false,
     "23 Juin 2024": false,
   });
-
   const [filtresScene, setFiltresScene] = useState({
     "Horizon Sonore": false,
     "Cybergroove": false,
@@ -28,8 +29,10 @@ function ListeDeProduits() {
     "Terre d'Emeraude": false,
   });
 
+  // État pour le filtre ouvert ou fermé
   const [filtreOuvert, setFiltreOuvert] = useState(false);
 
+  // Effet pour récupérer les produits depuis une API
   useEffect(() => {
     const url = new URL('https://promptia.fr/wp-json/wc/v3/products?_embed');
     url.searchParams.append('consumer_key', 'ck_e2c7c141b576494392f0d84d83daa63d792b71ff');
@@ -48,6 +51,7 @@ function ListeDeProduits() {
       .catch(error => console.error('Erreur:', error));
   }, []);
 
+  // Filtrer les produits en fonction des états des filtres
   const produitsFiltres = produits.filter((produit) => {
     const musiqueMatch =
       (filtresMusique.Pop && produit.categories.some(cat => cat.name === 'Pop')) ||
@@ -75,6 +79,7 @@ function ListeDeProduits() {
     );
   });
 
+  // Gérer le changement d'état des checkboxes pour le filtre de musique
   const handleCheckboxChange = (styleMusique) => {
     setFiltresMusique((prevFiltresMusique) => ({
       ...prevFiltresMusique,
@@ -82,6 +87,7 @@ function ListeDeProduits() {
     }));
   };
 
+  // Gérer le changement d'état des checkboxes pour le filtre de scène
   const handleCheckboxChangeScene = (nomScene) => {
     setFiltresScene((prevFiltresScene) => ({
       ...prevFiltresScene,
@@ -89,6 +95,7 @@ function ListeDeProduits() {
     }));
   };
 
+  // Gérer le changement d'état des checkboxes pour le filtre de date
   const handleCheckboxChangeDate = (dateConcert) => {
     setFiltresDate((prevFiltresDate) => ({
       ...prevFiltresDate,
@@ -96,10 +103,12 @@ function ListeDeProduits() {
     }));
   };
 
+  // Basculer l'état du filtre ouvert/fermé
   const toggleFiltre = () => {
     setFiltreOuvert(!filtreOuvert);
   };
 
+  // Réinitialiser tous les filtres
   const resetFilters = () => {
     setFiltresMusique({
       Pop: false,
@@ -133,6 +142,7 @@ function ListeDeProduits() {
 
         {filtreOuvert && (
           <div className="filtres-container">
+            {/* Filtre par style de musique */}
             <div className="categorie-filtre">
               <label>Filtrer par musique:</label>
               <div className="checkboxes-container">
@@ -149,6 +159,7 @@ function ListeDeProduits() {
               </div>
             </div>
 
+            {/* Filtre par date de concert */}
             <div className="categorie-filtre">
               <label>Filtrer par date de concert:</label>
               <div className="checkboxes-container">
@@ -165,6 +176,7 @@ function ListeDeProduits() {
               </div>
             </div>
 
+            {/* Filtre par scène */}
             <div className="categorie-filtre">
               <label>Filtrer par scène:</label>
               <div className="checkboxes-container">
@@ -181,39 +193,38 @@ function ListeDeProduits() {
               </div>
             </div>
 
+            {/* Bouton de réinitialisation des filtres */}
             <button onClick={resetFilters}>Réinitialiser les filtres</button>
           </div>
         )}
       </div>
 
+      {/* Affichage des cartes filtrées */}
       <div className="cards-container">
-  {produitsFiltres.map((produit, index) => {
-    const image = produit.images.length > 0 ? produit.images[0].src : '';
+        {produitsFiltres.map((produit, index) => {
+          const image = produit.images.length > 0 ? produit.images[0].src : '';
 
-    // Si le produit est un pass de festival, ne pas le rendre
-    if (["PASS 1 JOUR", "PASS 2 JOURS", "PASS 3 JOURS"].includes(produit.name)) {
-      return null;
-    }
+          // Si le produit est un pass de festival, ne pas le rendre
+          if (["PASS 1 JOUR", "PASS 2 JOURS", "PASS 3 JOURS"].includes(produit.name)) {
+            return null;
+          }
 
           return (
             <div key={index} className="card">
               <FontAwesomeIcon icon={faMusic} className="music-note pink" />
               <h2 className="pink">{produit.name}</h2>
               <img src={image} alt={produit.name} />
-              {/* Vous devrez peut-être ajuster les champs ci-dessous en fonction de la structure réelle de vos données */}
               <p dangerouslySetInnerHTML={{ __html: produit.short_description }}></p>
               <p dangerouslySetInnerHTML={{ __html: produit.description }}></p>
               {/*<p className="fw-bold">{produit.categories.map(cat => cat.name).join(', ')}</p> */}
               {/* <p className="fw-bold">Prix du billet : {produit.price} €</p> */}
-              {/* Vous devrez peut-être ajuster les champs ci-dessous en fonction de la structure réelle de vos données */}
-              {/*<p className="fw-bold">Le {new Date(produit.date_created).toLocaleDateString('fr-FR')} à {new Date(produit.date_created).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }).replace(/:/g, 'h')}</p>*/}
               <p className="fw-bold">{produit.tags && produit.tags.length > 0 ? produit.tags.map(tag => tag.name).join(', ') : 'Non spécifié'}</p>
               <button className='bouton-billetterie'>
                 <Link to="/billetterie" className="lien-bouton white">
                   Voir les Pass sur la billetterie
                 </Link>
               </button>
-              </div>
+            </div>
           );
         })}
       </div>
@@ -222,6 +233,4 @@ function ListeDeProduits() {
 }
 
 export default ListeDeProduits;
-
-
  

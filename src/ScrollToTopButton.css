@@ -1,8 +1,10 @@
+
+/* Style pour ma flèche scroll */
 .scroll-to-top {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff;
+    background-color: #64be8b;
     color: #fff;
     border: none;
     border-radius: 5px;

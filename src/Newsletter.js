@@ -20,7 +20,7 @@ function Newsletter() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Envoyer les données du formulaire à votre serveur ici
+    // Envoyer les données du formulaire au serveur
   };
 
   return (
