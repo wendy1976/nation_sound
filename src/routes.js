@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Accueil from './Accueil';
-import ArtistPage from './ArtistPage';
+
 import Billetterie from './Billetterie';
 import Concerts from './Concerts';
 import ContactForm from './ContactForm';
@@ -28,7 +28,7 @@ function AppRoutes() {
       <Route path="/faq" element={<Faq />} />
       <Route path="/legalNotice" element={<LegalNotice />} />
       <Route path="/billetterie" element={<Billetterie/>} />
-      <Route path="/artistPage" element={<ArtistPage />} />
+      
       <Route path="/produit/:id" component={<PageProduit />} />
       <Route path="/myMap" element={<MyMap />} />
     
