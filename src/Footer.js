@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaSnapchat, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import logo from './assets/imagesEtLogo/images/logo2.png';
 
 function Footer() {
@@ -20,10 +21,10 @@ function Footer() {
           <div className="liens me-5 pe-4">
             <h2 className="h6 pink">Autres pages:</h2>
             <ul>
-              <li><a href="/contactForm">Contact</a></li>
-              <li><a href="/newsletter">Newsletter</a></li>
-              <li><a href="/faq">Faq</a></li>
-              <li><a href="/legalNotice">Mentions Légales</a></li>
+              <li><Link to="/contactForm">Contact</Link></li>
+              <li><Link to="/newsletter">Newsletter</Link></li>
+              <li><Link to="/faq">Faq</Link></li>
+              <li><Link to="/legalNotice">Mentions Légales</Link></li>
             </ul>
           </div>
         </div>
