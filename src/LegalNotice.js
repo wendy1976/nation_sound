@@ -13,11 +13,11 @@ const LegalNotice = () => {
         <strong>Adresse du site :</strong> <a href="https://nationsound.fr">https://nationsound.fr</a><br />
         <strong>Propriétaire :</strong> Caroline FERRU<br />
         <strong>Responsable de publication :</strong> <a href="mailto:caroline.ferru@free.fr">caroline.ferru@free.fr</a><br />
-        <strong>Hébergement :</strong> IONOS
+        <strong>Hébergement :</strong> NETLIFY
       </p>
 
       <p className='red'>
-        <strong>Ce site a été créé pour un exercice de formation.</strong>
+        <strong>Ce site a été créé pour un exercice de formation, les images, la musique sont libres de droits, et les concerts et artistes sont fictifs.</strong>
       </p>
 
       <h2>Conditions d’utilisation</h2>
