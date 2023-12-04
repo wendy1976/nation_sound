@@ -4,7 +4,9 @@ import { Dropdown, Nav, Navbar } from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 //import { Link } from 'react-scroll';
 import { Link } from 'react-router-dom';
+import AudioPlayer from './AudioPlayer';
 import Logo from './assets/imagesEtLogo/images/logo1.png';
+
 
 
 function Header() {
@@ -94,13 +96,17 @@ function Header() {
             </Link>
             <Link to="/myMap" className="nav-link">
               <h1 className="h6 pink mt-3"style={{ fontWeight: 600 }}>Carte interactive</h1>
+              
             </Link>
             
           </Nav>
           
         </Navbar.Collapse>
+        
       </Navbar>
-
+      <div>
+      <AudioPlayer />
+      </div>
       {/*<Modal show={isCartOpen} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Mon panier</Modal.Title>

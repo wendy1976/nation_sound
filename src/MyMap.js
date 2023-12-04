@@ -26,7 +26,7 @@ import wc3Image from './assets/imagesEtLogo/images/wc3.png';
 
 const MyMap = () => {
   const cascadeCoordinates = [48.8621, 2.2526];
-  const [isGeolocationEnabled, setIsGeolocationEnabled] = useState(false);
+ 
   const mapRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -91,19 +91,7 @@ const MyMap = () => {
     setSelectedCategory(null);
   };
 
-  const toggleGeolocation = () => {
-    if (mapRef.current) {
-      if (isGeolocationEnabled) {
-        mapRef.current.stopLocate();
-      } else {
-        mapRef.current.locate({ setView: true, maxZoom: 16 });
-      }
-      setIsGeolocationEnabled((prev) => !prev);
-    } else {
-      console.error('Map reference is null.');
-    }
-  };
-
+  
   return (
     <>
       <div className="go-to-home-button">
@@ -153,11 +141,7 @@ const MyMap = () => {
               Réinitialiser le filtre
             </button>
 
-            <button className="d-flex align-items-center" onClick={toggleGeolocation}>
-              <span style={{ display: 'flex', alignItems: 'center' }}>
-                {isGeolocationEnabled ? 'Désactiver la géolocalisation' : 'Activer la géolocalisation'}
-              </span>
-            </button>
+            
 
           </div>
         )}
@@ -182,9 +166,7 @@ const MyMap = () => {
   </div>
 )}
 
-<button className="btn bgPink white d-inline-block" onClick={toggleGeolocation}>
-  {isGeolocationEnabled ? 'Désactiver la géolocalisation' : 'Activer la géolocalisation'}
-</button>
+
 
         <MapContainer center={cascadeCoordinates} zoom={15} style={{ height: '500px', width: '100%' }} whenCreated={(mapInstance) => (mapRef.current = mapInstance)}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
