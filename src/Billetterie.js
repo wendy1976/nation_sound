@@ -15,6 +15,7 @@ const Billetterie = () => {
   const [panierValide, setPanierValide] = useState(false);
 
   useEffect(() => {
+    // Fonction fetchData pour récupérer les données des produits
     const fetchData = async () => {
       const url = new URL('https://promptia.fr/wp-json/wc/v3/products?_embed');
       url.searchParams.append('consumer_key', 'ck_e2c7c141b576494392f0d84d83daa63d792b71ff');
@@ -38,6 +39,7 @@ const Billetterie = () => {
     fetchData();
   }, []);
 
+  // Fonction pour ajouter un pass au panier
   const ajouterAuPanier = (pass) => {
     setPanier((prevPanier) => {
       return {
@@ -55,10 +57,12 @@ const Billetterie = () => {
     }, 5000);
   };
 
+  // Fonction pour afficher ou masquer le panier
   const togglePanier = () => {
     setAfficherPanier(!afficherPanier);
   };
 
+  // Fonction pour supprimer un pass du panier
   const supprimerDuPanier = (pass) => {
     setPanier((prevPanier) => {
       const newPanier = { ...prevPanier };
@@ -81,79 +85,75 @@ const Billetterie = () => {
     });
   };
 
+  // Fonction pour réinitialiser le panier
   const reinitialiserPanier = () => {
     setPanier({});
   };
 
+  // Fonction pour calculer le total du panier
   const calculerTotal = () => {
     return Object.values(panier).reduce((total, item) => total + item.price * item.quantite, 0);
   };
 
+  // Fonction pour fermer le panier
   const fermerPanier = () => {
     setAfficherPanier(false);
   };
 
+  // Fonction pour valider le panier
   const validerPanier = () => {
     setPanierValide(true);
     genererBilletPDF(panier);
   };
 
+  // Fonction pour générer un billet PDF avec les détails du panier
   const genererBilletPDF = (panier) => {
     const pdf = new jsPDF();
-  
-    /// Déterminez les types de passes distincts dans le panier
-  const typesDePassDistincts = [...new Set(Object.values(panier).map(item => item.name))];
 
-  // Utilisez les types de passes distincts pour le titre
-  const titre = `Festival de Musique Nation Sound - Billet(s) ${typesDePassDistincts.join(', ')}`;
-  
-  pdf.setFillColor(255, 223, 186);
-  pdf.rect(10, 10, 190, 40, 'F');
+    // Déterminez les types de passes distincts dans le panier
+    const typesDePassDistincts = [...new Set(Object.values(panier).map(item => item.name))];
 
-  pdf.setFontSize(18);
-  pdf.setTextColor(255, 74, 147);
-  pdf.addImage(logoImage, 'PNG', 10, 10, 190, 40);
-  // Utilisez la fonction splitTextToSize pour diviser le texte en plusieurs lignes
-  const lines = pdf.splitTextToSize(titre, 170); // 170 est la largeur maximale avant de passer à une nouvelle ligne
-  pdf.text(lines, 20, 60); // Utilisez la variable lines ici
-  pdf.line(10, 50, 200, 50);
+    // Utilisez les types de passes distincts pour le titre
+    const titre = `Festival de Musique Nation Sound - Billet(s) ${typesDePassDistincts.join(', ')}`;
 
-  let yPosition = 80;
+    pdf.setFillColor(255, 223, 186);
+    pdf.rect(10, 10, 190, 40, 'F');
 
-  Object.values(panier).forEach((item) => {
+    pdf.setFontSize(18);
+    pdf.setTextColor(255, 74, 147);
+    pdf.addImage(logoImage, 'PNG', 10, 10, 190, 40);
+    const lines = pdf.splitTextToSize(titre, 170);
+    pdf.text(lines, 20, 60);
+    pdf.line(10, 50, 200, 50);
+
+    let yPosition = 80;
+
+    Object.values(panier).forEach((item) => {
+      pdf.setFontSize(12);
+      pdf.setTextColor(0, 0, 0);
+      pdf.text(`${item.name} - Quantité: ${item.quantite}`, 20, yPosition);
+
+      pdf.setFontSize(10);
+      pdf.text(`Prix unitaire: ${item.price} €`, 20, yPosition + 10);
+      pdf.text(`Total: ${item.price * item.quantite} €`, 20, yPosition + 20);
+
+      yPosition += 40;
+    });
+
+    pdf.setFillColor(100, 190, 139);
+    pdf.rect(10, yPosition, 190, 20, 'F');
+
     pdf.setFontSize(12);
-    pdf.setTextColor(0, 0, 0);
-    pdf.text(`${item.name} - Quantité: ${item.quantite}`, 20, yPosition);
+    pdf.setTextColor(255, 74, 147);
+    pdf.text(`Total: ${calculerTotal()} €`, 20, yPosition + 10);
 
-    pdf.setFontSize(10);
-    pdf.text(`Prix unitaire: ${item.price} €`, 20, yPosition + 10);
-    pdf.text(`Total: ${item.price * item.quantite} €`, 20, yPosition + 20);
-
-    yPosition += 40;
-  });
-
-  pdf.setFillColor(100, 190, 139);
-  pdf.rect(10, yPosition, 190, 20, 'F');
-
-  pdf.setFontSize(12);
-  pdf.setTextColor(255, 74, 147);
-  pdf.text(`Total: ${calculerTotal()} €`, 20, yPosition + 10);
-
-  // Générez un QR Code fictif (utilisez une chaîne unique, comme la date du festival)
-const qrCodeData = '2024-06-21'; // Utilisez une valeur pertinente à votre cas
-
-// Générez le QR Code et convertissez-le en URL de données
-QRCode.toDataURL(qrCodeData, { errorCorrectionLevel: 'H' }, function (err, url) {
-  if (err) throw err
-
-  // Ajoutez l'image du QR Code au PDF
-  pdf.addImage(url, 'PNG', 150, yPosition + 20, 50, 50);
-
-  pdf.save('billet_pass.pdf');
-});
-};
-  
-  
+    const qrCodeData = '2024-06-21';
+    QRCode.toDataURL(qrCodeData, { errorCorrectionLevel: 'H' }, function (err, url) {
+      if (err) throw err;
+      pdf.addImage(url, 'PNG', 150, yPosition + 20, 50, 50);
+      pdf.save('billet_pass.pdf');
+    });
+  };
 
   return (
     <Layout>
@@ -171,7 +171,7 @@ QRCode.toDataURL(qrCodeData, { errorCorrectionLevel: 'H' }, function (err, url) 
               <h2 className='pink'>Votre panier a bien été validé!</h2>
             ) : (
               <>
-                <h2 className='pink'>🧺  Panier</h2>
+                <h2 className='pink'>🧺 Panier</h2>
                 <ul>
                   {Object.values(panier).map((item) => (
                     item.quantite > 0 && (
@@ -220,5 +220,4 @@ QRCode.toDataURL(qrCodeData, { errorCorrectionLevel: 'H' }, function (err, url) 
 };
 
 export default Billetterie;
-
  

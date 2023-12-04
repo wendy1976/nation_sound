@@ -28,7 +28,7 @@ function AppRoutes() {
       <Route path="/faq" element={<Faq />} />
       <Route path="/legalNotice" element={<LegalNotice />} />
       <Route path="/billetterie" element={<Billetterie/>} />
-      
+     
       <Route path="/produit/:id" component={<PageProduit />} />
       <Route path="/myMap" element={<MyMap />} />
     
