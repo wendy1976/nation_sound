@@ -76,7 +76,7 @@ function Accueil() {
                   style={{ width: '100%', height: 'auto', maxWidth: '500px', display: 'block', margin: '0 auto' }}
                 />
                 <p>
-                  Consultez la <a href="/myMap">carte interactive</a> pour plus de détails.
+                  Consultez la <Link to ="/myMap">carte interactive</Link> pour plus de détails.
                 </p>
               </Card.Text>
             </Card.Body>
