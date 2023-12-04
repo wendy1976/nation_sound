@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-
-
 body {
   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   /* Utilisation de Poppins par défaut, sinon Segoe UI, Tahoma, Geneva, Verdana ou une police sans-serif générique */
@@ -80,8 +78,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #FF5757;
 }
 
-
-
 /* CSS pour les écrans d'ordinateur */
 @media (min-width: 992px) {
   #laBilletterie {
@@ -104,7 +100,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 12px;
   }
 }
-
 
 /*effet de survol de mon bouton voir "billetterie" au milieu du slide */    
 #laBilletterie:hover {
@@ -135,10 +130,9 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   /* Vos styles d'arrière-plan ou autres styles globaux */
-  background-color: #F6F6FF; /* Exemple de couleur d'arrière-plan */
-  
-  /* Autres styles globaux */
+  background-color: #F6F6FF; /* Exemple de couleur d'arrière-plan */  
 }
+
 /* position de "informations et faq* dans le menu de mon header*/
 .custom-margin {
   margin-bottom: -10px; /* Ajustez la valeur en fonction de vos besoins */
@@ -190,16 +184,13 @@ body {
 }
 
 /* mise en forme de la section transport */
-/* Exemple de classes pour vos boutons */
 .myButton {
   background-color:#64be8b;  /* Couleur de fond du bouton */
   color: white; /* Couleur du texte du bouton */
-  /* Autres styles comme la taille de la police, la marge, le rembourrage, etc. */
 }
 
 .myButton:hover {
-  background-color: #E6E16D; /* Couleur de fond du bouton au survol */
-  /* Autres styles de survol */
+  background-color: #E6E16D; /* Couleur de fond du bouton au survol */ 
 }
 
 /* Style du trait rose sous mes images */
@@ -211,20 +202,13 @@ body {
 }
 
 /* Mise en forme de la FAQ */
-.faq-section {
-  /* Styles pour la section FAQ */
-  /* Par exemple, marges, espacement, etc. */
-}
-
 .faq-item {
   max-width: 70%;
   margin: 0 auto; /* Centrer l'élément horizontalement */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px; /* Ajout de remplissage pour l'espace à l'intérieur de la boîte d'ombre */
-  margin-bottom: 20px; /* Ajout d'une marge en bas pour éviter le chevauchement */
-  /* Autres styles pour chaque élément de FAQ */
+  margin-bottom: 20px; /* Ajout d'une marge en bas pour éviter le chevauchement */ 
 }
-
 
 .faq-question {
   background-color: #64be8b;
@@ -243,7 +227,6 @@ body {
   background-color: #E6E16D; /* Couleur différente au survol */
 }
 
-
 .faq-answer {
   width: 70%;
   margin: 0 auto;
@@ -254,19 +237,17 @@ body {
   transition: background-color 0.3s ease;
   transition: text-decoration 0.3s ease;
 }
-/* Essai d'ajustement du bouton panier */
 
 
+/* le panier */
 #panierPopup {
   position: fixed;
   top: 55px;
   right: 10px;
-  z-index: 1000; /* Assurez-vous que le bouton est en avant par rapport aux autres éléments si nécessaire */
-  padding: 5px 10px; /* Ajustez les valeurs de remplissage pour modifier la taille du bouton */
+  z-index: 1000; /* mise en avant par rapport aux autres éléments */
+  padding: 5px 10px;
   width: auto;
 }
-
-
 
 /* Mise en forme de mon formulaire de contact */
 .contact-form-container {
@@ -274,7 +255,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  
 }
 
 .form {
