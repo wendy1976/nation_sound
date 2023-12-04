@@ -47,56 +47,57 @@ function Accueil() {
       <ServicesSection />
 
       {/* Newsletter and Interactive Map Section */}
-<div className="row mx-auto">
-  {/* Newsletter Section */}
-  <div className="col-12 col-md-4 ps-5 mx-auto">
-    <Card>
-      <Card.Body>
-        <Card.Title className='pink fw-bold'>Inscrivez-vous à notre newsletter</Card.Title>
-        <Card.Text>
-          <p>Pour avoir toutes les dernières informations, abonnez-vous!</p>
-          <Link to="/newsletter">
-            <Button className='bgPink bgNews'>S'abonner <MdEmail /></Button>
-          </Link>
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  </div>
+      <div className="row mx-auto">
+        {/* Newsletter Section */}
+        <div className="col-12 col-md-4 ps-5 mx-auto">
+          <Card>
+            <Card.Body>
+              <Card.Title className='pink fw-bold'>Inscrivez-vous à notre newsletter</Card.Title>
+              <Card.Text>
+                <p>Pour avoir toutes les dernières informations, abonnez-vous!</p>
+                <Link to="/newsletter">
+                  <Button className='bgPink bgNews'>S'abonner <MdEmail /></Button>
+                </Link>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
 
-  {/* Interactive Map Section */}
-  <div className="col-12 col-md-4 mx-auto">
-    <Card>
-      <Card.Body>
-        <Card.Title className='pink fw-bold'>Carte Interactive</Card.Title>
-        <Card.Text>
-          <p>Découvrez le plan du festival sur la carte interactive.</p>
-          <img
-            src={miniCarteImage}
-            alt="présentation de la carte interactive"
-            style={{ width: '100%', height: 'auto', maxWidth: '500px', display: 'block', margin: '0 auto' }}
-          />
-          <p>
-            Consultez la <a href="/myMap">carte interactive</a> pour plus de détails.
-          </p>
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  </div>
+        {/* Interactive Map Section */}
+        <div className="col-12 col-md-4 mx-auto">
+          <Card>
+            <Card.Body>
+              <Card.Title className='pink fw-bold'>Carte Interactive</Card.Title>
+              <Card.Text>
+                <p>Découvrez le plan du festival sur la carte interactive.</p>
+                <img
+                  src={miniCarteImage}
+                  alt="présentation de la carte interactive"
+                  style={{ width: '100%', height: 'auto', maxWidth: '500px', display: 'block', margin: '0 auto' }}
+                />
+                <p>
+                  Consultez la <a href="/myMap">carte interactive</a> pour plus de détails.
+                </p>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
 
-  {/* Troisième bloc avec le composant FestivalCountdown */}
-  <div className="col-12 col-md-4 mx-auto">
-        <Card>
-          <Card.Body>
-            <Card.Title className='pink fw-bold'>Compte à rebours du Festival</Card.Title>
-            <Card.Text>
-              {/* Intégrez le composant FestivalCountdown */}
-              <FestivalCountdown />
-            </Card.Text>
-          </Card.Body>
-        </Card>
-  </div>
-</div>
-{/* Fin de la section */}
+        {/* Festival Countdown Component */}
+        <div className="col-12 col-md-4 mx-auto">
+          <Card>
+            <Card.Body>
+              <Card.Title className='pink fw-bold'>Compte à rebours du Festival</Card.Title>
+              <Card.Text>
+                {/* Intégration du composant FestivalCountdown */}
+                <FestivalCountdown />
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+      </div>
+      {/* Fin de la section */}
+      
       {/* Footer Component */}
       <Footer />
 
@@ -107,4 +108,4 @@ function Accueil() {
 }
 
 export default Accueil;
-
+ 
