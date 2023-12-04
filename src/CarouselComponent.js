@@ -3,51 +3,59 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
-//Création de mon slider
+// Composant pour créer le slider (Carousel)
 function CarouselComponent() {
-    return (
-      <Carousel>
-        <Carousel.Item>
+  return (
+    <Carousel>
+      {/* Slide 1 */}
+      <Carousel.Item>
         <img
-            className="d-block w-100 img-fluid"
-            src={require("./assets/imagesEtLogo/images/slide1.jpg")} 
-            alt="First slide"
+          className="d-block w-100 img-fluid"
+          src={require("./assets/imagesEtLogo/images/slide1.jpg")} 
+          alt="First slide"
         />
-          <Carousel.Caption>
-            
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 img-fluid"
-            src={require("./assets/imagesEtLogo/images/slide2.jpg")} 
-            alt="Second slide"
-          />
-          <Carousel.Caption>
-           
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 img-fluid"
-            src={require("./assets/imagesEtLogo/images/slide3.jpg")}
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 img-fluid"
-            src={require("./assets/imagesEtLogo/images/slide4.jpg")}
-            alt="Fourth slide"
-          />
-          <Carousel.Caption>
-            
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-    );
-  }
-  export default CarouselComponent;
+        <Carousel.Caption>
+          {/* image du slide 1*/}
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      {/* Slide 2 */}
+      <Carousel.Item>
+        <img
+          className="d-block w-100 img-fluid"
+          src={require("./assets/imagesEtLogo/images/slide2.jpg")} 
+          alt="Second slide"
+        />
+        <Carousel.Caption>
+          {/* image du slide 2 */}
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      {/* Slide 3 */}
+      <Carousel.Item>
+        <img
+          className="d-block w-100 img-fluid"
+          src={require("./assets/imagesEtLogo/images/slide3.jpg")}
+          alt="Third slide"
+        />
+        <Carousel.Caption>
+          {/* image du slide 3 */}
+        </Carousel.Caption>
+      </Carousel.Item>
+
+      {/* Slide 4 */}
+      <Carousel.Item>
+        <img
+          className="d-block w-100 img-fluid"
+          src={require("./assets/imagesEtLogo/images/slide4.jpg")}
+          alt="Fourth slide"
+        />
+        <Carousel.Caption>
+          {/* image du slide 4 */}
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  );
+}
+
+export default CarouselComponent;
