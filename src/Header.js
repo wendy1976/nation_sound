@@ -1,27 +1,21 @@
+// Importation des bibliothèques et composants nécessaires
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import { Dropdown, Nav, Navbar } from 'react-bootstrap';
-//import { Link } from 'react-router-dom';
-//import { Link } from 'react-scroll';
 import { Link } from 'react-router-dom';
 import AudioPlayer from './AudioPlayer';
 import Logo from './assets/imagesEtLogo/images/logo1.png';
 
-
-
 function Header() {
- 
+  // État pour contrôler la visibilité du sous-menu d'informations
   const [showInfoSubMenu, setShowInfoSubMenu] = useState(false);
-  
 
-  
-
-  const toggleInfoSubMenu = () => { // Définition de toggleInfoSubMenu
+  // Fonction pour basculer la visibilité du sous-menu d'informations
+  const toggleInfoSubMenu = () => {
     setShowInfoSubMenu(!showInfoSubMenu);
   };
 
-  
-
+  // Fonction pour gérer le clic sur les éléments du sous-menu
   const handleSubMenuClick = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -32,83 +26,77 @@ function Header() {
 
   return (
     <div>
-      
+      {/* Barre de navigation */}
       <Navbar className="bgYellow px-5" expand="lg" id="navbar">
-      <Link to="/">
-  <img src={Logo} alt="logo" id="logo" style={{ width: '285px', height: '100px' }} />
-      </Link>
+        {/* Logo Nation Sound */}
+        <Link to="/">
+          <img src={Logo} alt="logo" id="logo" style={{ width: '285px', height: '100px' }} />
+        </Link>
+        {/* Bouton de bascule de la barre de navigation */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {/* Contenu de la barre de navigation */}
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="position-relative">
+            {/* Lien vers la page d'accueil */}
             <Link to="/" className="nav-link">
-            <h1 className="h6 pink mt-3" style={{ fontWeight: 600 }}>Accueil</h1>
+              <h1 className="h6 pink mt-3" style={{ fontWeight: 600 }}>Accueil</h1>
             </Link>
+            {/* Lien vers la page Concerts */}
             <Link to="/concerts" className="nav-link">
               <h1 className="h6 pink mt-3" style={{ fontWeight: 600 }}>Concert & Programmation</h1>
             </Link>
+            {/* Menu déroulant d'informations avec sous-menu */}
             <Dropdown show={showInfoSubMenu} onToggle={toggleInfoSubMenu}>
-  <Dropdown.Toggle id="infoDropdown" as={Nav.Link}>
-  <Link to="/infos" className="nav-link" >
-  <h1 className="h6 pink mt-2" style={{ fontWeight: 600 }}>Informations et FAQ</h1>
-</Link>
-  </Dropdown.Toggle>
-  <Dropdown.Menu>
-    {/* Sections spécifiques du sous-menu */}
-    <Dropdown.Item onClick={() => handleSubMenuClick('section1')}>
-      Transport
-    </Dropdown.Item>
-    <Dropdown.Item onClick={() => handleSubMenuClick('section2')}>
-      Logement
-    </Dropdown.Item>
-    <Dropdown.Item onClick={() => handleSubMenuClick('section3')}>
-      Restauration et Bar
-    </Dropdown.Item>
-    <Dropdown.Item onClick={() => handleSubMenuClick('section4')}>
-      Accessibilité
-    </Dropdown.Item>
-    <Dropdown.Item onClick={() => handleSubMenuClick('section5')}>
-      Infos vente
-    </Dropdown.Item>
-    <Dropdown.Item onClick={() => handleSubMenuClick('section6')}>
-      FAQ
-    </Dropdown.Item>
-    {/* Ajoutez d'autres éléments de menu déroulant comme nécessaire */}
-  </Dropdown.Menu>
-</Dropdown>
+              <Dropdown.Toggle id="infoDropdown" as={Nav.Link}>
+                <Link to="/infos" className="nav-link" >
+                  <h1 className="h6 pink mt-2" style={{ fontWeight: 600 }}>Informations et FAQ</h1>
+                </Link>
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                {/* Sections du sous-menu */}
+                <Dropdown.Item onClick={() => handleSubMenuClick('section1')}>
+                  Transport
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => handleSubMenuClick('section2')}>
+                  Logement
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => handleSubMenuClick('section3')}>
+                  Restauration et Bar
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => handleSubMenuClick('section4')}>
+                  Accessibilité
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => handleSubMenuClick('section5')}>
+                  Infos vente
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => handleSubMenuClick('section6')}>
+                  FAQ
+                </Dropdown.Item>
+                {/* Ajoutez plus d'éléments de sous-menu si nécessaire */}
+              </Dropdown.Menu>
+            </Dropdown>
+            {/* Lien vers la page Nos partenaires */}
             <Link to="/partners" className="nav-link">
               <h1 className="h6 pink mt-3 "style={{ fontWeight: 600 }}>Nos partenaires</h1>
             </Link>
+            {/* Lien vers la page Billetterie */}
             <Link to="/billetterie" className="nav-link">
               <h1 className="h6 pink mt-3"style={{ fontWeight: 600 }}>Billetterie</h1>
             </Link>
+            {/* Lien vers la page Carte interactive */}
             <Link to="/myMap" className="nav-link">
               <h1 className="h6 pink mt-3"style={{ fontWeight: 600 }}>Carte interactive</h1>
-              
             </Link>
-            
           </Nav>
-          
         </Navbar.Collapse>
-        
       </Navbar>
+      {/* Composant AudioPlayer */}
       <div>
-      <AudioPlayer />
+        <AudioPlayer />
       </div>
-      {/*<Modal show={isCartOpen} onHide={handleClose} backdrop="static">
-        <Modal.Header closeButton>
-          <Modal.Title>Mon panier</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Cart cartItems={cartItems} onRemoveItem={handleRemoveItem} onClearCart={handleClearCart} />
-        </Modal.Body>
-        <Modal.Footer>
-          <button className="btn btn-secondary" onClick={handleClose}>
-          Fermer
-          </button>
-        </Modal.Footer>
-        </Modal> */}
     </div>
   );
 }
 
 export default Header;
+ 
