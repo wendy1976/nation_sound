@@ -10,30 +10,17 @@ import Logo from './assets/imagesEtLogo/images/logo1.png';
 
 
 function Header() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]); 
+ 
   const [showInfoSubMenu, setShowInfoSubMenu] = useState(false);
   
 
-  const handleCartClick = () => {
-    setIsCartOpen(!isCartOpen);
-  };
-
-  const handleRemoveItem = (itemToRemove) => {
-    setCartItems(cartItems.filter(item => item.id !== itemToRemove.id));
-  };
+  
 
   const toggleInfoSubMenu = () => { // Définition de toggleInfoSubMenu
     setShowInfoSubMenu(!showInfoSubMenu);
   };
 
-  const handleClose = () => {
-    setIsCartOpen(false);
-  };
-
-  const handleClearCart = () => {
-    setCartItems([]);
-  };
+  
 
   const handleSubMenuClick = (sectionId) => {
     const section = document.getElementById(sectionId);
@@ -61,7 +48,7 @@ function Header() {
             </Link>
             <Dropdown show={showInfoSubMenu} onToggle={toggleInfoSubMenu}>
   <Dropdown.Toggle id="infoDropdown" as={Nav.Link}>
-  <Link to="/infos" className="nav-link" onClick={handleClose}>
+  <Link to="/infos" className="nav-link" >
   <h1 className="h6 pink mt-2" style={{ fontWeight: 600 }}>Informations et FAQ</h1>
 </Link>
   </Dropdown.Toggle>
