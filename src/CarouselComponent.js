@@ -15,7 +15,7 @@ function CarouselComponent() {
           alt="First slide"
         />
         <Carousel.Caption>
-          {/* image du slide 1*/}
+          {/* Image du slide 1 */}
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -27,7 +27,7 @@ function CarouselComponent() {
           alt="Second slide"
         />
         <Carousel.Caption>
-          {/* image du slide 2 */}
+          {/* Image du slide 2 */}
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -39,7 +39,7 @@ function CarouselComponent() {
           alt="Third slide"
         />
         <Carousel.Caption>
-          {/* image du slide 3 */}
+          {/* Image du slide 3 */}
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -51,7 +51,7 @@ function CarouselComponent() {
           alt="Fourth slide"
         />
         <Carousel.Caption>
-          {/* image du slide 4 */}
+          {/* Image du slide 4 */}
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
@@ -59,3 +59,4 @@ function CarouselComponent() {
 }
 
 export default CarouselComponent;
+ 
