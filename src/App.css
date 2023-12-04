@@ -1,89 +1,121 @@
-@import url(https://fonts.google.com/specimen/Fjalla+One);
-@import url(https://fonts.google.com/?query=Droid+Serif);
+/* Importation des polices depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-:root {
-    --white: #F6F6FF;
-    --black: #1F1F1F;
-    --green: #64be8b;
-    --lightgreen:#7BDCB5;
-    --pink:#D93DA5;
-    --yellow: #E6E16D;
-    --red: #FF5757;
+/* Styles pour le corps de la page */
+body {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Utilisation de Poppins par défaut, sinon Segoe UI, Tahoma, Geneva, Verdana ou une police sans-serif générique */
 }
 
-.white{
+/* Styles pour les titres */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Quicksand', 'Arial Rounded MT Bold', Arial, sans-serif;
+  /* Utilisation de Quicksand par défaut, sinon Arial Rounded MT Bold, Arial ou une police sans-serif générique */
+  font-weight: bold;
+}
+
+/* Définition des couleurs dans les variables CSS */
+:root {
+  --white: #F6F6FF;
+  --black: #1F1F1F;
+  --green: #64be8b;
+  --lightgreen: #7BDCB5;
+  --pink: #D93DA5;
+  --yellow: #E6E16D;
+  --red: #FF5757;
+}
+
+/* Styles pour le texte en couleur blanche */
+.white {
   color: #F6F6FF;
 }
 
+/* Styles pour l'arrière-plan en couleur blanche */
 .bgWhite {
   background-color: #F6F6FF;
 }
 
+/* Styles pour le texte en couleur noire */
 .black {
   color: #1F1F1F;
 }
 
+/* Styles pour l'arrière-plan en couleur noire */
 .bgBlack {
   background-color: #1F1F1F;
 }
 
+/* Styles pour le texte en couleur verte */
 .green {
   color: #64be8b;
 }
 
+/* Styles pour l'arrière-plan en couleur verte */
 .bgGreen {
   background-color: #64be8b;
 }
 
+/* Styles pour le texte en couleur verte claire */
 .lightgreen {
   color: #7BDCB5;
 }
 
+/* Styles pour l'arrière-plan en couleur verte claire */
 .bgLightgreen {
   background-color: #7BDCB5;
 }
 
+/* Styles pour le texte en couleur rose */
 .pink {
   color: #D93DA5;
 }
 
+/* Styles pour l'arrière-plan en couleur rose */
 .bgPink {
   background-color: #D93DA5;
 }
 
+/* Styles pour le texte en couleur jaune */
 .yellow {
   color: #E6E16D;
 }
 
+/* Styles pour l'arrière-plan en couleur jaune */
 .bgYellow {
   background-color: #E6E16D;
 }
 
+/* Styles pour le texte en couleur rouge */
 .red {
   color: #FF5757;
 }
 
+/* Styles pour l'arrière-plan en couleur rouge */
 .bgRed {
   background-color: #FF5757;
 }
 
+/* Styles pour la classe App */
 .App {
   text-align: center;
 }
 
-/*dimension du logo*/
+/* Dimensionnement du logo */
 #logo {
   padding-left: 10%;
   width: 20% important!;
   height: 20% important!;
 }
 
+/* Animations pour le logo de l'application */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/* Styles pour l'entête de l'application */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -95,10 +127,12 @@
   color: white;
 }
 
+/* Styles pour les liens de l'application */
 .App-link {
   color: #61dafb;
 }
 
+/* Définition des animations pour le logo de l'application */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -108,17 +142,12 @@
   }
 }
 
-body {
-  /* Vos styles d'arrière-plan ou autres styles globaux */
-  background-color: #FF5757; /* Exemple de couleur d'arrière-plan */
-  
-  /* Autres styles globaux */
-}
-
+/* Styles pour les icônes des réseaux sociaux */
 .reseauxSociaux {
   color: #64be8b;
 }
 
+/* Styles pour le lien du panier personnalisé */
 .custom-cart-link {
   position: absolute;
   top: 0;
