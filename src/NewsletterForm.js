@@ -11,6 +11,7 @@ function NewsletterForm({ formData, handleInputChange, handleSubmit }) {
         name="firstName"
         value={formData.firstName}
         onChange={handleInputChange}
+        placeholder="Votre prénom"
         required
       />
       <br />
@@ -21,6 +22,7 @@ function NewsletterForm({ formData, handleInputChange, handleSubmit }) {
         name="lastName"
         value={formData.lastName}
         onChange={handleInputChange}
+        placeholder="Votre nom"
         required
       />
       <br />
@@ -31,6 +33,7 @@ function NewsletterForm({ formData, handleInputChange, handleSubmit }) {
         name="email"
         value={formData.email}
         onChange={handleInputChange}
+        placeholder="Votre adresse e-mail"
         required
       />
       <br />
@@ -40,3 +43,4 @@ function NewsletterForm({ formData, handleInputChange, handleSubmit }) {
 }
 
 export default NewsletterForm;
+
