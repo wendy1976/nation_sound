@@ -80,10 +80,14 @@ const AudioPlayer = () => {
       />
       {/* Zone de contrôles pour le lecteur audio */}
       <div className="audio-controls">
+        {/* Texte à gauche des boutons */}
+        <div className="h3 me-2 pink text-left animate__animated animate__backInLeft">Nation</div>
         {/* Bouton Play/Pause avec icône dynamique en fonction de l'état de lecture */}
         <button onClick={toggleAudio}>{isPlaying ? '⏸' : '▶️'}</button>
         {/* Bouton Stop */}
         <button onClick={stopAudio}>⏹️</button>
+        {/* Texte à droite des boutons */}
+        <div className="h3 pink text-right animate__animated animate__backInRight">Sound</div>
       </div>
       {/* Barre de progression pour suivre la progression de la lecture audio */}
       <div className="progress-container">
@@ -95,6 +99,5 @@ const AudioPlayer = () => {
 
 // Exporter le composant pour une utilisation dans d'autres parties de l'application
 export default AudioPlayer;
-
 
  

@@ -49,7 +49,7 @@ function Accueil() {
       {/* Newsletter and Interactive Map Section */}
       <div className="row mx-auto">
         {/* Newsletter Section */}
-        <div className="col-12 col-md-4 ps-5 mx-auto">
+        <div className="col-12 col-md-4 ps-2 mx-auto">
           <Card>
             <Card.Body>
               <Card.Title className='pink fw-bold'>Inscrivez-vous à notre newsletter</Card.Title>
@@ -84,7 +84,7 @@ function Accueil() {
         </div>
 
         {/* Festival Countdown Component */}
-        <div className="col-12 col-md-4 mx-auto">
+        <div className="col-12 col-md-4 pe-3 mx-auto">
           <Card>
             <Card.Body>
               <Card.Title className='pink fw-bold'>Compte à rebours du Festival</Card.Title>
