@@ -1,4 +1,0 @@
-
-// ArtistPage.js
-
-

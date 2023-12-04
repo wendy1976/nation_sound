@@ -1,38 +1,44 @@
 
- .audio-container {
-    text-align: center;
-    margin-top: 20px;
+ /* Conteneur principal pour le lecteur audio */
+.audio-container {
+    text-align: center; /* Centrer le contenu horizontalement dans le conteneur */
+    margin-top: 20px; /* Ajouter une marge en haut pour l'espace */
   }
   
+  /* Contrôles audio, boutons play/pause/stop */
   .audio-controls {
-    display: flex; /* Utilisez Flexbox pour aligner les boutons horizontalement */
-    justify-content: center; /* Ajustez la justification  */
-    margin-top: 10px;
+    display: flex; /* Utiliser Flexbox pour aligner les boutons horizontalement */
+    justify-content: center; /* Centrer les boutons horizontalement */
+    margin-top: 10px; /* Ajouter une marge en haut pour l'espace */
   }
   
+  /* Styles pour tous les boutons */
   button {
-    background-color: #7BDCB5;
-    color: #fff;
-    padding: 5px 10px; 
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    margin-right: 10px;
+    background-color: #7BDCB5; /* Couleur de fond des boutons */
+    color: #fff; /* Couleur du texte des boutons */
+    padding: 5px 10px; /* Espacement intérieur des boutons */
+    font-size: 16px; /* Taille de la police des boutons */
+    cursor: pointer; /* Afficher un curseur au survol */
+    border: none; /* Supprimer la bordure par défaut */
+    margin-right: 10px; /* Ajouter une marge à droite pour l'espace entre les boutons */
   }
   
+  /* Styles pour les boutons au survol */
   button:hover {
-    background-color: #2980b9;
+    background-color: #2980b9; /* Nouvelle couleur de fond au survol */
   }
   
+  /* Barre de progression générale */
   progress {
-    width: 100%;
-    height: 10px;
-    margin-top: 10px;
+    width: 100%; /* Occupera la largeur totale de son conteneur parent */
+    height: 10px; /* Hauteur de la barre de progression */
+    margin-top: 10px; /* Ajouter une marge en haut pour l'espace */
   }
   
+  /* Barre de progression spécifique avec une couleur différente */
   #progressBar {
-    width: 100%;
-    height: 10px;
-    color: #7BDCB5;
+    width: 100%; /* Occupera la largeur totale de son conteneur parent */
+    height: 10px; /* Hauteur de la barre de progression */
+    color: #7BDCB5; /* Couleur de la barre de progression */
   }
   
