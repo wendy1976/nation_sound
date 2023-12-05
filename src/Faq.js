@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Faq() {
@@ -77,7 +78,12 @@ function Faq() {
                     <h2 onClick={() => toggleAnswer(index)} className="faq-question">
                         {faq.isOpen ? '-' : '+'} {faq.question}
                     </h2>
-                    {faq.isOpen && <div className="faq-answer" dangerouslySetInnerHTML={{ __html: faq.answer }} />}
+                    {faq.isOpen && 
+                        <div className="faq-answer">
+                            <span dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                            {faq.link && <Link to={faq.link}>{faq.linkText}</Link>}
+                        </div>
+                    }
                 </div>
             ))}
         </div>
