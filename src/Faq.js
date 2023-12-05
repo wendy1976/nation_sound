@@ -21,7 +21,9 @@ function Faq() {
         },
         {
             question: 'Le lieu ?',
-            answer: 'Le festival aura lieu : Route de la grande cascade – 75016 PARIS,nous avons mis à votre disposition une carte interactive afin de mieux vous repérer: <a href="/myMap">Carte interactive</a>.'
+            answer: 'Le festival aura lieu : Route de la grande cascade – 75016 PARIS,nous avons mis à votre disposition une carte interactive afin de mieux vous repérer: ',
+            link: '/myMap',
+            linkText: 'Carte interactive'
         },
         {
             question: 'Les horaires ?',
