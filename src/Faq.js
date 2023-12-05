@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 function Faq() {
     const [faqs, setFaqs] = useState([
         {
@@ -67,6 +68,7 @@ function Faq() {
     };
 
     return (
+       
         <div className="faq-section">
             {faqs.map((faq, index) => (
                 <div key={index} className="faq-item">
@@ -77,6 +79,7 @@ function Faq() {
                 </div>
             ))}
         </div>
+       
     );
 }
 
