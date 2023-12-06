@@ -1,0 +1,9 @@
+/*rajout pastille dans mon bouton panier avec le nombre d'articles dans le panier*/
+.badge {
+    background-color: red; /* Couleur de fond de la pastille */
+    color: white; /* Couleur du texte dans la pastille */
+    border-radius: 50%; /* Forme de la pastille (cercle) */
+    padding: 0.2rem 0.5rem; /* Espace à l'intérieur de la pastille */
+    margin-left: 0.5rem; /* Marge à gauche pour l'espacement du texte */
+    font-size: 0.8rem; /* Taille du texte dans la pastille */
+  } 

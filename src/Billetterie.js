@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import jsPDF from 'jspdf';
 import QRCode from 'qrcode';
 import React, { useEffect, useState } from 'react';
+import './Billetterie.css';
 import Layout from './Layout';
 import logoImage from './assets/imagesEtLogo/images/logo1.png';
 import Image from './assets/imagesEtLogo/images/pass.jpg';
@@ -95,6 +96,11 @@ const Billetterie = () => {
     return Object.values(panier).reduce((total, item) => total + item.price * item.quantite, 0);
   };
 
+  // Fonction pour calculer le nombre total d'articles dans le panier
+  const calculerNombreArticles = () => {
+    return Object.values(panier).reduce((total, item) => total + item.quantite, 0);
+  };
+
   // Fonction pour fermer le panier
   const fermerPanier = () => {
     setAfficherPanier(false);
@@ -160,6 +166,9 @@ const Billetterie = () => {
       <div className="navbar">
         <button className="panier-button" onClick={togglePanier}>
           <FontAwesomeIcon icon={faShoppingCart} /> Panier
+            {calculerNombreArticles() > 0 && (
+          <span className="badge">{calculerNombreArticles()}</span>
+          )}
         </button>
       </div>
 
