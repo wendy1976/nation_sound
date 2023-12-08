@@ -8,33 +8,57 @@ function Newsletter() {
     firstName: '',
     lastName: '',
     email: '',
+    newsletterAgreement: false,
   });
 
+  const [subscribed, setSubscribed] = useState(false); // Nouvel état pour le suivi de l'abonnement
+
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value, type, checked } = event.target;
+    const inputValue = type === 'checkbox' ? checked : value;
+
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: inputValue,
     }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Envoyer les données du formulaire au serveur
+    // Simuler l'envoi des données du formulaire au serveur
+    // (vous devrez implémenter la logique d'abonnement réelle ici)
+    console.log(formData);
+
+    // Réinitialiser le formulaire après l'abonnement réussi
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      newsletterAgreement: false,
+    });
+
+    // Mettre à jour l'état pour afficher le message de confirmation
+    setSubscribed(true);
   };
 
   return (
     <Layout>
-    <div>
-      <h1 className="text-center mb-4 pink">Inscription à la newsletter</h1>
-      <NewsletterForm
-        formData={formData}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-      />
-    </div>
+      <div>
+        <h1 className="text-center mb-4 pink">Inscription à la newsletter</h1>
+        {/* Afficher un message de confirmation si l'utilisateur s'est abonné */}
+        {subscribed ? (
+          <p className='text-center'>Merci de vous être abonné à notre newsletter!</p>
+        ) : (
+          <NewsletterForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+            handleSubmit={handleSubmit}
+          />
+        )}
+      </div>
     </Layout>
   );
 }
 
 export default Newsletter;
+

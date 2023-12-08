@@ -37,10 +37,29 @@ function NewsletterForm({ formData, handleInputChange, handleSubmit }) {
         required
       />
       <br />
+      {/* Case à cocher pour autorisation */}
+      <div className="form-group form-check">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          id="newsletterAgreementCheckbox"
+          name="newsletterAgreement"
+          checked={formData.newsletterAgreement}
+          onChange={handleInputChange}
+          required
+        />
+        <label className="form-check-label" htmlFor="newsletterAgreementCheckbox">
+          <span style={{ fontSize: 'x-small', fontStyle: 'italic' }}>
+            J'autorise Nation Sound à utiliser mon adresse mail pour m'envoyer la Newsletter.
+          </span>
+        </label>
+      </div>
+      {/* Bouton d'envoi du formulaire */}
       <button type="submit">S'abonner</button>
     </form>
   );
 }
 
 export default NewsletterForm;
+
 
