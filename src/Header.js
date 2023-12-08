@@ -43,7 +43,11 @@ function Header() {
             </Link>
             {/* Lien vers la page Concerts */}
             <Link to="/concerts" className="nav-link">
-              <h1 className="h6 pink mt-3" style={{ fontWeight: 600 }}>Concert & Programmation</h1>
+              <h1 className="h6 pink mt-3" style={{ fontWeight: 600 }}>Concerts & Programmation</h1>
+            </Link>
+            {/* Lien vers la page Billetterie */}
+            <Link to="/billetterie" className="nav-link">
+              <h1 className="h6 pink mt-3"style={{ fontWeight: 600 }}>Billetterie</h1>
             </Link>
             {/* Menu déroulant d'informations avec sous-menu */}
             <Dropdown show={showInfoSubMenu} onToggle={toggleInfoSubMenu}>
@@ -79,10 +83,7 @@ function Header() {
             <Link to="/partners" className="nav-link">
               <h1 className="h6 pink mt-3 "style={{ fontWeight: 600 }}>Nos partenaires</h1>
             </Link>
-            {/* Lien vers la page Billetterie */}
-            <Link to="/billetterie" className="nav-link">
-              <h1 className="h6 pink mt-3"style={{ fontWeight: 600 }}>Billetterie</h1>
-            </Link>
+            
             {/* Lien vers la page Carte interactive */}
             <Link to="/myMap" className="nav-link">
               <h1 className="h6 pink mt-3"style={{ fontWeight: 600 }}>Carte interactive</h1>
