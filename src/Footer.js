@@ -5,21 +5,20 @@ import logo from './assets/imagesEtLogo/images/logo2.png';
 
 function Footer() {
   return (
-    // Début du footer 1ère colonne avec la marque et un paragraphe
     <footer className="container-fluid bgYellow" id="mainFooter">
       <section className="row pt-4 gx-4 mb-4">
-        {/* Première colonne */}
-        <div className="col-12 col-md-4 col-lg-4">
-          <div className="marque pe-5 me-5">
-            <h2 className="h6 pink">Festival produit par:</h2>
+        {/* Première colonne avec le logo */}
+        <div className="col-12 col-md-4 col-lg-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
+          <div className="marque pe-5 me-5 text-center">
+           
             <img className="img-fluid w-50" src={logo} alt="Logo Live Events" />
           </div>
         </div>
 
-        {/* Deuxième colonne */}
-        <div className="col-12 col-md-4 col-lg-4">
+        {/* Deuxième colonne avec les liens */}
+        <div className="col-12 col-md-4 col-lg-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
           <div className="liens me-5 pe-4">
-            <h2 className="h6 pink">Autres pages:</h2>
+          
             <ul>
               <li><Link to="/contactForm">Contact</Link></li>
               <li><Link to="/newsletter">Newsletter</Link></li>
@@ -29,34 +28,58 @@ function Footer() {
           </div>
         </div>
 
-        {/* Troisième colonne */}
-        <div className="col-12 col-md-4 col-lg-4">
-          {/* Réseaux sociaux */}
-          <div className="row">
-            <div className="reseauxSociaux me-5 pe-4">
-              <a className="facebook custom-icon-color me-4" href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" role="button" id="facebook">
-                <FaFacebook style={{ fontSize: '50px' }} />
+        {/* Troisième colonne avec les réseaux sociaux sur deux lignes */}
+        <div className="col-12 col-md-4 col-lg-4 d-flex align-items-center justify-content-center">
+          <div className="reseauxSociaux me-5 pe-4 text-center">
+            {/* Icônes de réseaux sociaux sur une seule ligne sur les mobiles */}
+            <div className="d-md-none mb-3">
+              <a className="facebook custom-icon-color ms-5 me-2" href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" role="button" id="facebook">
+                <FaFacebook style={{ fontSize: '30px' }} />
               </a>
-              <a className="twitter custom-icon-color me-4" href="http://www.twitter.com" target="_blank" rel="noopener noreferrer" role="button" id="twitter">
-                <FaTwitter style={{ fontSize: '50px' }} />
+              <a className="twitter custom-icon-color me-2" href="http://www.twitter.com" target="_blank" rel="noopener noreferrer" role="button" id="twitter">
+                <FaTwitter style={{ fontSize: '30px' }} />
               </a>
-              <a className="instagram custom-icon-color " href="http://www.instagram.com" target="_blank" rel="noopener noreferrer" role="button" id="instagram">
-                <FaInstagram style={{ fontSize: '50px' }} />
+              <a className="instagram custom-icon-color me-2" href="http://www.instagram.com" target="_blank" rel="noopener noreferrer" role="button" id="instagram">
+                <FaInstagram style={{ fontSize: '30px' }} />
+              </a>
+              <a className="youtube custom-icon-color me-2" href="http://www.youtube.com" target="_blank" rel="noopener noreferrer" role="button" id="youtube">
+                <FaYoutube style={{ fontSize: '30px' }} />
+              </a>
+              <a className="snapchat custom-icon-color me-2 " href="http://www.snapchat.com" target="_blank" rel="noopener noreferrer" role="button" id="snapchat">
+                <FaSnapchat style={{ fontSize: '30px' }} />
+              </a>
+              <a className="linkedin custom-icon-color me-1" href="http://www.linkedin.com" target="_blank" rel="noopener noreferrer" role="button" id="linkedin">
+                <FaLinkedin style={{ fontSize: '30px' }} />
               </a>
             </div>
-          </div>
-          {/* Deuxième ligne des réseaux sociaux */}
-          <div className="row">
-            <div className="reseaux me-5 pe-4">
-              <a className="youtube custom-icon-color me-4" href="http://www.youtube.com" target="_blank" rel="noopener noreferrer" role="button" id="youtube">
-                <FaYoutube style={{ fontSize: '50px' }} />
-              </a>
-              <a className="snapchat custom-icon-color me-4 " href="http://www.snapchat.com" target="_blank" rel="noopener noreferrer" role="button" id="snapchat">
-                <FaSnapchat style={{ fontSize: '50px' }} />
-              </a>
-              <a className="linkedin custom-icon-color" href="http://www.linkedin.com" target="_blank" rel="noopener noreferrer" role="button" id="linkedin">
-                <FaLinkedin style={{ fontSize: '50px' }} />
-              </a>
+
+            {/* Icônes de réseaux sociaux sur deux lignes sur les écrans plus grands */}
+            <div className="d-none d-md-block">
+              {/* Première ligne des réseaux sociaux */}
+              <div className="mb-3">
+                <a className="facebook custom-icon-color me-4" href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" role="button" id="facebook">
+                  <FaFacebook style={{ fontSize: '50px' }} />
+                </a>
+                <a className="twitter custom-icon-color me-4" href="http://www.twitter.com" target="_blank" rel="noopener noreferrer" role="button" id="twitter">
+                  <FaTwitter style={{ fontSize: '50px' }} />
+                </a>
+                <a className="instagram custom-icon-color " href="http://www.instagram.com" target="_blank" rel="noopener noreferrer" role="button" id="instagram">
+                  <FaInstagram style={{ fontSize: '50px' }} />
+                </a>
+              </div>
+
+              {/* Deuxième ligne des réseaux sociaux */}
+              <div>
+                <a className="youtube custom-icon-color me-4" href="http://www.youtube.com" target="_blank" rel="noopener noreferrer" role="button" id="youtube">
+                  <FaYoutube style={{ fontSize: '50px' }} />
+                </a>
+                <a className="snapchat custom-icon-color me-4 " href="http://www.snapchat.com" target="_blank" rel="noopener noreferrer" role="button" id="snapchat">
+                  <FaSnapchat style={{ fontSize: '50px' }} />
+                </a>
+                <a className="linkedin custom-icon-color" href="http://www.linkedin.com" target="_blank" rel="noopener noreferrer" role="button" id="linkedin">
+                  <FaLinkedin style={{ fontSize: '50px' }} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
