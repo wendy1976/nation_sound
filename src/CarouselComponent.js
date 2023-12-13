@@ -21,11 +21,13 @@ function CarouselComponent() {
 
       {/* Slide 2 */}
       <Carousel.Item>
-        <img
-          className="d-block w-100 img-fluid"
-          src={require("./assets/imagesEtLogo/images/slide2.webp")} 
-          alt="Second slide"
-        />
+      <img
+        className="d-block w-100 img-fluid"
+        src={require("./assets/imagesEtLogo/images/slide2.webp")}
+        alt="Second slide"
+        width="1200"
+        height="800"
+      />
         <Carousel.Caption>
           {/* Image du slide 2 */}
         </Carousel.Caption>
