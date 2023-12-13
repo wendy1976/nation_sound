@@ -5,10 +5,10 @@ import Modal from 'react-modal';
 function ArtistCard() {
   // État pour stocker la liste des produits
   const [produits, setProduits] = useState([]);
-  
+
   // État pour gérer l'ouverture et la fermeture de la modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  
+
   // État pour stocker les détails du produit sélectionné
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -44,6 +44,14 @@ function ArtistCard() {
     }
   }, [produits]); // Ajouter produits comme dépendance pour éviter la boucle infinie
 
+  const isWebPSupported = () => {
+    const elem = document.createElement('canvas');
+    if (!!(elem.getContext && elem.getContext('2d'))) {
+      return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    }
+    return false;
+  };
+
   return (
     <div className="cards-container">
       <div className="row">
@@ -55,6 +63,10 @@ function ArtistCard() {
 
           // Extraire l'image du produit
           const image = produit.images.length > 0 ? produit.images[0].src : '';
+          const imageUrlWebP = `${image}.webp`;
+
+          const supportsWebP = isWebPSupported();
+          const imageUrlToDisplay = supportsWebP ? imageUrlWebP : image;
 
           // Styles personnalisés pour la modal
           const customStyles = {
@@ -81,13 +93,13 @@ function ArtistCard() {
 
           return (
             <div key={index} className="col-md-6 mb-5 d-flex">
-             <div className="artist-card bgWhite p-4 rounded-3 shadow-lg d-flex flex-column " style={{ border: '1px solid #ccc', height: '100%' }}>
+              <div className="artist-card bgWhite p-4 rounded-3 shadow-lg d-flex flex-column " style={{ border: '1px solid #ccc', height: '100%' }}>
                 <div className="row animate__animated animate__swing animate__slow	2s animate__repeat-3">
                   <div className="col-12 col-md-5">
                     {/* Afficher l'image du produit */}
                     <img
-                      src={image} alt={produit.name}
-                      className="img-fluid" // Classe Bootstrap pour rendre l'image réactive
+                      src={imageUrlToDisplay} alt={produit.name}
+                      className="img-fluid"
                     />
                   </div>
                   <div className="col-12 col-md-7">
@@ -102,10 +114,10 @@ function ArtistCard() {
                     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
                       <h2 className="pink">{selectedProduct?.name}</h2>
                       {/* Afficher l'image du produit sélectionné avec des styles personnalisés */}
-                      <img 
-                        src={selectedProduct?.images[0].src} 
-                        alt={selectedProduct?.name} 
-                        style={{ width: '150px', height: '150px', objectFit: 'cover' }} 
+                      <img
+                        src={selectedProduct?.images[0].src}
+                        alt={selectedProduct?.name}
+                        style={{ width: '150px', height: '150px', objectFit: 'cover' }}
                       />
                       {/* Afficher la description courte du produit */}
                       <p dangerouslySetInnerHTML={{ __html: selectedProduct?.short_description }}></p>
@@ -128,7 +140,4 @@ function ArtistCard() {
 }
 
 export default ArtistCard;
-
-
-
-
+ 

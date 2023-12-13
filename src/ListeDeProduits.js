@@ -51,6 +51,15 @@ function ListeDeProduits() {
       .catch(error => console.error('Erreur:', error));
   }, []);
 
+  // Fonction pour vérifier la prise en charge de WebP
+  const isWebPSupported = () => {
+    const elem = document.createElement('canvas');
+    if (!!(elem.getContext && elem.getContext('2d'))) {
+      return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    }
+    return false;
+  };
+
   // Filtrer les produits en fonction des états des filtres
   const produitsFiltres = produits.filter((produit) => {
     const musiqueMatch =
@@ -202,18 +211,26 @@ function ListeDeProduits() {
       {/* Affichage des cartes filtrées */}
       <div className="cards-container">
         {produitsFiltres.map((produit, index) => {
-          const image = produit.images.length > 0 ? produit.images[0].src : '';
-
           // Si le produit est un pass de festival, ne pas le rendre
           if (["PASS 1 JOUR", "PASS 2 JOURS", "PASS 3 JOURS"].includes(produit.name)) {
             return null;
           }
 
+          // Extraire l'image du produit
+          const image = produit.images.length > 0 ? produit.images[0].src : '';
+          const imageUrlWebP = `${image}.webp`;
+
+          const supportsWebP = isWebPSupported();
+          const imageUrlToDisplay = supportsWebP ? imageUrlWebP : image;
+
           return (
             <div key={index} className="card">
               <FontAwesomeIcon icon={faMusic} className="music-note pink" />
               <h2 className="pink">{produit.name}</h2>
-              <img src={image} alt={produit.name} />
+              <img
+                src={imageUrlToDisplay} alt={produit.name}
+                className="img-fluid"
+              />
               <p dangerouslySetInnerHTML={{ __html: produit.short_description }}></p>
               <p dangerouslySetInnerHTML={{ __html: produit.description }}></p>
               {/*<p className="fw-bold">{produit.categories.map(cat => cat.name).join(', ')}</p> */}

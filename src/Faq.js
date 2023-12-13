@@ -71,14 +71,13 @@ function Faq() {
     };
 
     return (
-       
         <div className="faq-section">
             {faqs.map((faq, index) => (
                 <div key={index} className="faq-item">
                     <h2 onClick={() => toggleAnswer(index)} className="faq-question">
                         {faq.isOpen ? '-' : '+'} {faq.question}
                     </h2>
-                    {faq.isOpen && 
+                    {faq.isOpen &&
                         <div className="faq-answer">
                             <span dangerouslySetInnerHTML={{ __html: faq.answer }} />
                             {faq.link && <Link to={faq.link}>{faq.linkText}</Link>}
@@ -87,7 +86,6 @@ function Faq() {
                 </div>
             ))}
         </div>
-       
     );
 }
 
