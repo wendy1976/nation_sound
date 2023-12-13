@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaSnapchat, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import logo from './assets/imagesEtLogo/images/logo2.png';
+import logo from './assets/imagesEtLogo/images/logo2.webp';
 
 function Footer() {
   return (

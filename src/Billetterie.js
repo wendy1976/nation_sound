@@ -5,7 +5,7 @@ import QRCode from 'qrcode';
 import React, { useEffect, useState } from 'react';
 import './Billetterie.css';
 import Layout from './Layout';
-import logoImage from './assets/imagesEtLogo/images/logo1.png';
+import logoImage from './assets/imagesEtLogo/images/logo1.webp';
 import Image from './assets/imagesEtLogo/images/pass.jpg';
 
 const Billetterie = () => {

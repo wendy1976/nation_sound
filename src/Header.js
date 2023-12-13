@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Dropdown, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AudioPlayer from './AudioPlayer';
-import Logo from './assets/imagesEtLogo/images/logo1.png';
+import Logo from './assets/imagesEtLogo/images/logo1.webp';
 
 function Header() {
   // État pour contrôler la visibilité du sous-menu d'informations

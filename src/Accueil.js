@@ -10,7 +10,7 @@ import Footer from './Footer';
 import Header from './Header';
 import ScrollToTopButton from './ScrollToTopButton';
 import ServicesSection from './ServicesSection';
-import miniCarteImage from './assets/imagesEtLogo/images/miniCarte.png';
+import miniCarteImage from './assets/imagesEtLogo/images/minicarte.webp';
 
 function Accueil() {
   return (

@@ -11,7 +11,7 @@ function CarouselComponent() {
       <Carousel.Item>
         <img
           className="d-block w-100 img-fluid"
-          src={require("./assets/imagesEtLogo/images/slide1.jpg")} 
+          src={require("./assets/imagesEtLogo/images/slide1.webp")} 
           alt="First slide"
         />
         <Carousel.Caption>
@@ -23,7 +23,7 @@ function CarouselComponent() {
       <Carousel.Item>
         <img
           className="d-block w-100 img-fluid"
-          src={require("./assets/imagesEtLogo/images/slide2.jpg")} 
+          src={require("./assets/imagesEtLogo/images/slide2.webp")} 
           alt="Second slide"
         />
         <Carousel.Caption>
@@ -35,7 +35,7 @@ function CarouselComponent() {
       <Carousel.Item>
         <img
           className="d-block w-100 img-fluid"
-          src={require("./assets/imagesEtLogo/images/slide3.jpg")}
+          src={require("./assets/imagesEtLogo/images/slide3.webp")}
           alt="Third slide"
         />
         <Carousel.Caption>
@@ -47,7 +47,7 @@ function CarouselComponent() {
       <Carousel.Item>
         <img
           className="d-block w-100 img-fluid"
-          src={require("./assets/imagesEtLogo/images/slide4.jpg")}
+          src={require("./assets/imagesEtLogo/images/slide4.webp")}
           alt="Fourth slide"
         />
         <Carousel.Caption>
