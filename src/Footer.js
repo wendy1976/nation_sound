@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaSnapchat, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import logo from './assets/imagesEtLogo/images/logo2.webp';
+import logo from './assets/imagesEtLogo/images/logo2.png';
 
 function Footer() {
   return (
@@ -57,26 +57,26 @@ function Footer() {
             <div className="d-none d-md-block">
               {/* Première ligne des réseaux sociaux */}
               <div className="mb-3">
-                <a className="facebook custom-icon-color me-4" href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" role="button" id="facebook">
+                <a className="facebook custom-icon-color me-4" href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" role="button" id="facebook2">
                   <FaFacebook style={{ fontSize: '50px' }} />
                 </a>
-                <a className="twitter custom-icon-color me-4" href="http://www.twitter.com" target="_blank" rel="noopener noreferrer" role="button" id="twitter">
+                <a className="twitter custom-icon-color me-4" href="http://www.twitter.com" target="_blank" rel="noopener noreferrer" role="button" id="twitter2">
                   <FaTwitter style={{ fontSize: '50px' }} />
                 </a>
-                <a className="instagram custom-icon-color " href="http://www.instagram.com" target="_blank" rel="noopener noreferrer" role="button" id="instagram">
+                <a className="instagram custom-icon-color " href="http://www.instagram.com" target="_blank" rel="noopener noreferrer" role="button" id="instagram2">
                   <FaInstagram style={{ fontSize: '50px' }} />
                 </a>
               </div>
 
               {/* Deuxième ligne des réseaux sociaux */}
               <div>
-                <a className="youtube custom-icon-color me-4" href="http://www.youtube.com" target="_blank" rel="noopener noreferrer" role="button" id="youtube">
+                <a className="youtube custom-icon-color me-4" href="http://www.youtube.com" target="_blank" rel="noopener noreferrer" role="button" id="youtube2">
                   <FaYoutube style={{ fontSize: '50px' }} />
                 </a>
-                <a className="snapchat custom-icon-color me-4 " href="http://www.snapchat.com" target="_blank" rel="noopener noreferrer" role="button" id="snapchat">
+                <a className="snapchat custom-icon-color me-4 " href="http://www.snapchat.com" target="_blank" rel="noopener noreferrer" role="button" id="snapchat2">
                   <FaSnapchat style={{ fontSize: '50px' }} />
                 </a>
-                <a className="linkedin custom-icon-color" href="http://www.linkedin.com" target="_blank" rel="noopener noreferrer" role="button" id="linkedin">
+                <a className="linkedin custom-icon-color" href="http://www.linkedin.com" target="_blank" rel="noopener noreferrer" role="button" id="linkedin2">
                   <FaLinkedin style={{ fontSize: '50px' }} />
                 </a>
               </div>

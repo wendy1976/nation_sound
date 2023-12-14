@@ -1,114 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+:root {
+  --white: #F6F6FF;
+  --black: #1F1F1F;
+  --green: #64be8b;
+  --lightgreen: #7BDCB5;
+  --pink: #D93DA5;
+  --yellow: #E6E16D;
+  --red: #FF5757;
+}
+
 body {
   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* Utilisation de Poppins par défaut, sinon Segoe UI, Tahoma, Geneva, Verdana ou une police sans-serif générique */
+  background-color: var(--white);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Quicksand', 'Arial Rounded MT Bold', Arial, sans-serif;
-  /* Utilisation de Quicksand par défaut, sinon Arial Rounded MT Bold, Arial ou une police sans-serif générique */
   font-weight: bold;
 }
 
-:root {
-    --white: #F6F6FF;
-    --black: #1F1F1F;
-    --green: #64be8b;
-    --lightgreen:#7BDCB5;
-    --pink:#D93DA5;
-    --yellow: #E6E16D;
-    --red: #FF5757;
+/* Colors */
+.white { color: var(--white); }
+.bgWhite { background-color: var(--white); }
+.black { color: var(--black); }
+.bgBlack { background-color: var(--black); }
+.green { color: var(--green); }
+.bgGreen { background-color: var(--green); }
+.lightgreen { color: var(--lightgreen); }
+.bgLightgreen { background-color: var(--lightgreen); }
+.pink { color: var(--pink); }
+.bgPink { background-color: var(--pink); }
+.yellow { color: var(--yellow); }
+.bgYellow { background-color: var(--yellow); }
+.red { color: var(--red); }
+.bgRed { background-color: var(--red); }
+
+/* Billetterie Button */
+#laBilletterie {
+  background-color: var(--green);
 }
 
-.white{
-  color: #F6F6FF;
-}
-
-.bgWhite {
-  background-color: #F6F6FF;
-}
-
-.black {
-  color: #1F1F1F;
-}
-
-.bgBlack {
-  background-color: #1F1F1F;
-}
-
-.green {
-  color: #64be8b;
-}
-
-.bgGreen {
-  background-color: #64be8b;
-}
-
-.lightgreen {
-  color: #7BDCB5;
-}
-
-.bgLightgreen {
-  background-color: #7BDCB5;
-}
-
-.pink {
-  color: #D93DA5;
-}
-
-.bgPink {
-  background-color: #D93DA5;
-}
-
-.yellow {
-  color: #E6E16D;
-}
-
-.bgYellow {
-  background-color: #E6E16D;
-}
-
-.red {
-  color: #FF5757;
-}
-
-.bgRed {
-  background-color: #FF5757;
-}
-
-/* CSS pour les écrans d'ordinateur */
 @media (min-width: 992px) {
-  #laBilletterie {
-    top: -460px;
-    position: relative;
-    left: 43%; 
-    background-color: #64be8b;
-  }
+  #laBilletterie { top: -460px; position: relative; left: 43%; }
 }
 
-/* CSS pour les écrans mobiles */
 @media (max-width: 991px) {
   #laBilletterie {
-    top: -150px; /* Ajustez cette valeur en fonction de vos besoins */
+    top: -150px;
     position: relative;
-    left: 30%; /* Ajustez cette valeur en fonction de vos besoins */
-    background-color: #64be8b;
-    width: 150px; /* Ajustez cette valeur en fonction de vos besoins */
-    height: 35px; /* Ajustez cette valeur en fonction de vos besoins */
+    left: 30%;
+    width: 150px;
+    height: 35px;
     font-size: 12px;
   }
 }
 
-/*effet de survol de mon bouton voir "billetterie" au milieu du slide */    
-#laBilletterie:hover {
-  color:#D93DA5;
-}  
-
-.bgNews:hover{
-  background-color:#7BDCB5;
-}
+#laBilletterie:hover { color: var(--pink); }
+.bgNews:hover { background-color: var(--lightgreen); }
 
 .product-card img {
   width: 100%;
@@ -117,33 +67,22 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 5px;
 }
 
-/*page concert et programmation: les paramètres de mes fiches concerts*/
+/* Concert and Programming Page */
 .product-card {
   width: calc(33.33% - 20px);
   float: right;
   margin: 10px;
-  padding: 10px;  
+  padding: 10px;
   border-radius: 5px;
   text-align: center;
-  background-color:#7BDCB5 ;
+  background-color: var(--lightgreen);
 }
 
-body {
-  /* Vos styles d'arrière-plan ou autres styles globaux */
-  background-color: #F6F6FF; /* Exemple de couleur d'arrière-plan */  
-}
+/* Global Styles */
+.custom-margin { margin-bottom: -10px; }
+.custom-icon-color { color: var(--green); }
 
-/* position de "informations et faq* dans le menu de mon header*/
-.custom-margin {
-  margin-bottom: -10px; /* Ajustez la valeur en fonction de vos besoins */
-}
-
-/* Couleur de mes icones de réseaux sociaux dans le footer */
-.custom-icon-color {
-    color: #64be8b;
-}
-
-/* mise en forme de l'inscription à la newsletter  */
+/* Newsletter Form */
 .newsletter-form-container {
   max-width: 400px;
   margin: 0 auto;
@@ -151,14 +90,11 @@ body {
   background: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #64be8b;
+  background-color: var(--green);
   margin-bottom: 70px;
 }
 
-.newsletter-form-container label {
-  display: block;
-  margin: 10px 0;
-}
+.newsletter-form-container label { display: block; margin: 10px 0; }
 
 .newsletter-form-container input[type="text"],
 .newsletter-form-container input[type="email"] {
@@ -172,83 +108,72 @@ body {
 .newsletter-form-container button {
   width: calc(100% - 20px);
   padding: 10px;
-  background-color: #D93DA5;
-  color: white;
+  background-color: var(--pink);
+  color: var(--white);
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.newsletter-form-container button:hover {
-  background-color: #E6E16D;
-}
+.newsletter-form-container button:hover { background-color: var(--yellow); }
 
-/* mise en forme de la section transport */
-.myButton {
-  background-color:#64be8b;  /* Couleur de fond du bouton */
-  color: white; /* Couleur du texte du bouton */
-}
+/* Transport Section */
+.myButton { background-color: var(--green); color: var(--white); }
 
-.myButton:hover {
-  background-color: #E6E16D; /* Couleur de fond du bouton au survol */ 
-}
+.myButton:hover { background-color: var(--yellow); }
 
-/* Style du trait rose sous mes images */
+/* Pink Separator Style */
 .pinkSeparator {
-  height: 3px; /* Hauteur du trait */
-  width: 70%; /* Largeur du trait (pleine largeur) */
-  background-color: #D93DA5; /* Couleur du trait */
-  margin: 20px auto; /* Marge autour du trait */
+  height: 3px;
+  width: 70%;
+  background-color: var(--pink);
+  margin: 20px auto;
 }
 
-/* Mise en forme de la FAQ */
+/* FAQ Section */
 .faq-item {
   max-width: 70%;
-  margin: 0 auto; /* Centrer l'élément horizontalement */
-  box-shadow: 0 4px 8px #E6E16D;
-  padding: 10px; /* Ajout de remplissage pour l'espace à l'intérieur de la boîte d'ombre */
-  margin-bottom: 20px; /* Ajout d'une marge en bas pour éviter le chevauchement */ 
+  margin: 0 auto;
+  box-shadow: 0 4px 8px var(--yellow);
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .faq-question {
-  background-color: #64be8b;
-  font-size: 1.1em !important; /* Ajout de !important pour prioriser cette règle */
-  color: #D93DA5;
+  background-color: var(--green);
+  font-size: 1.1em !important;
+  color: var(--pink);
   width: 85%;
   margin: 0 auto;
   padding: 10px;
-  border-radius: 10px; 
+  border-radius: 10px;
   transition: background-color 0.3s ease;
   font-weight: bold;
 }
 
-.faq-question:hover {
-  background-color: #E6E16D; /* Couleur différente au survol */
-}
+.faq-question:hover { background-color: var(--yellow); }
 
 .faq-answer {
   width: 85%;
   margin: 0 auto;
   padding: 10px;
   border-radius: 10px;
-  color:#1F1F1F;
+  color: var(--black);
   margin-top: 10px;
-  transition: background-color 0.3s ease;
-  transition: text-decoration 0.3s ease;
+  transition: background-color 0.3s ease, text-decoration 0.3s ease;
 }
 
-
-/* le panier */
+/* Cart Popup */
 #panierPopup {
   position: fixed;
   top: 55px;
   right: 10px;
-  z-index: 1000; /* mise en avant par rapport aux autres éléments */
+  z-index: 1000;
   padding: 5px 10px;
   width: auto;
 }
 
-/* Mise en forme de mon formulaire de contact */
+/* Contact Form */
 .contact-form-container {
   display: flex;
   justify-content: center;
@@ -263,20 +188,17 @@ body {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #64be8b;
+  background-color: var(--green);
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
+.form-group { margin-bottom: 15px; }
 
 label {
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-input,
-textarea {
+input, textarea {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -287,46 +209,39 @@ textarea {
 button {
   width: auto;
   padding: 10px;
-  background-color: #D93DA5;
-  color: #fff;
+  background-color: var(--pink);
+  color: var(--white);
   border: none;
   border-radius: 3px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #E6E16D;
-}
+button:hover { background-color: var(--yellow); }
 
-/* Mise en forme de la page des mentions légales */
+/* Legal Mentions Page */
 .mentions-legales-container {
-  max-width: 800px; /* Définir la largeur maximale du cadre */
-  margin: 0 auto; /* Centrer le cadre horizontalement */
-  padding: 20px; /* Ajouter un espacement intérieur au cadre */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.mentions-legales-title {
-  margin-bottom: 30px; /* Ajouter de l'espace en bas du titre */
-}
+.mentions-legales-title { margin-bottom: 30px; }
 
-/* Mise en forme de la page billetterie */
+/* Ticketing Page */
 .pass-item {
   display: flex;
   border: 1px solid #ccc;
   margin: 10px;
 }
 
-.pass-content {
-  flex: 1;
-  padding: 10px;
-}
+.pass-content { flex: 1; padding: 10px; }
 
 .pass-image img {
   width: 50%;
   height: auto;
 }
 
-/* Message pop-up de l'ajout au panier */
+/* Add to Cart Popup Message */
 .popup {
   position: fixed;
   top: 50%;
@@ -339,7 +254,7 @@ button:hover {
   z-index: 999;
 }
 
-/* Mise en forme du panier */
+/* Cart Styles */
 .panier {
   position: fixed;
   top: 0;
@@ -350,14 +265,14 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 999;
 }
-/* pour ne pas souligner le texte des boutons quand il renvoie vers un lien */
-.lien-bouton {
-  text-decoration: none;
-}
 
-/* mise en forme de mon bouton panier */
+/* Remove Text Underline from Button Links */
+.lien-bouton { text-decoration: none; }
+
+/* Cart Button Style */
 .panier-button {
   margin-left: auto;
   display: flex;
   align-items: center;
 }
+ 

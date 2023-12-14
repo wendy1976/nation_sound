@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { MdEmail } from 'react-icons/md';

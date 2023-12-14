@@ -213,7 +213,7 @@ const Billetterie = () => {
         {passes.map((pass) => (
           <div key={pass.id} className="row border mb-4 p-3 bgYellow">
             <div className="col-md-3">
-              <img src={Image} alt="" className="img-fluid animate__animated animate__swing animate__slow	2s animate__repeat-3" />
+              <img src={Image} alt="Pass" className="img-fluid animate__animated animate__swing animate__slow	2s animate__repeat-3" />
             </div>
             <div className="col-md-9">
               <h3 className='pink'>{pass.name}</h3>
