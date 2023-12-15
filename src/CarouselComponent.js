@@ -1,7 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 
 // Composant pour créer le slider (Carousel)
 function CarouselComponent() {
@@ -9,8 +9,7 @@ function CarouselComponent() {
     <Carousel>
       {/* Slide 1 */}
       <Carousel.Item>
-        <LazyLoadImage
-          effect="blur"
+        <img
           className="d-block w-100 img-fluid"
           src={require("./assets/imagesEtLogo/images/slide1.webp")} 
           alt="First slide"
@@ -22,12 +21,11 @@ function CarouselComponent() {
 
       {/* Slide 2 */}
       <Carousel.Item>
-        <LazyLoadImage
-          effect="blur"
-          className="d-block w-100 img-fluid"
-          src={require("./assets/imagesEtLogo/images/slide2.webp")}
-          alt="Second slide"
-        />
+      <img
+        className="d-block w-100 img-fluid"
+        src={require("./assets/imagesEtLogo/images/slide2.webp")}
+        alt="Second slide"
+      />
         <Carousel.Caption>
           {/* Image du slide 2 */}
         </Carousel.Caption>
@@ -35,8 +33,7 @@ function CarouselComponent() {
 
       {/* Slide 3 */}
       <Carousel.Item>
-        <LazyLoadImage
-          effect="blur"
+        <img
           className="d-block w-100 img-fluid"
           src={require("./assets/imagesEtLogo/images/slide3.webp")}
           alt="Third slide"
@@ -48,8 +45,7 @@ function CarouselComponent() {
 
       {/* Slide 4 */}
       <Carousel.Item>
-        <LazyLoadImage
-          effect="blur"
+        <img
           className="d-block w-100 img-fluid"
           src={require("./assets/imagesEtLogo/images/slide4.webp")}
           alt="Fourth slide"
@@ -63,3 +59,4 @@ function CarouselComponent() {
 }
 
 export default CarouselComponent;
+ 

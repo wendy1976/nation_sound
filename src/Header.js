@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Dropdown, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AudioPlayer from './AudioPlayer';
-import Logo from './assets/imagesEtLogo/images/logo1.png';
+import Logo from './assets/imagesEtLogo/images/logo1.webp';
 
 function Header() {
   // État pour contrôler la visibilité du sous-menu d'informations
@@ -30,7 +30,7 @@ function Header() {
       <Navbar className="bgYellow px-5" expand="lg" id="navbar">
         {/* Logo Nation Sound */}
         <Link to="/">
-          <img src={Logo} alt="logo" id="logo" style={{ width: '285px', height: '100px' }} />
+          <img src={Logo} alt="logo" id="logo" style={{ width: '285px', height: '90px' }} />
         </Link>
         {/* Bouton de bascule de la barre de navigation */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

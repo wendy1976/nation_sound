@@ -1,7 +1,5 @@
 import 'animate.css';
 import React, { useEffect, useState } from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component'; // Import de LazyLoadImage
-import 'react-lazy-load-image-component/src/effects/blur.css';
 import Modal from 'react-modal';
 
 function ArtistCard() {
@@ -98,11 +96,9 @@ function ArtistCard() {
               <div className="artist-card bgWhite p-4 rounded-3 shadow-lg d-flex flex-column " style={{ border: '1px solid #ccc', height: '100%' }}>
                 <div className="row animate__animated animate__swing animate__slow	2s animate__repeat-3">
                   <div className="col-12 col-md-5">
-                    {/* Utilisation de LazyLoadImage pour le chargement différé de l'image avec effet de flou */}
-                    <LazyLoadImage
-                      alt={produit.name}
-                      effect="blur"
-                      src={imageUrlToDisplay}
+                    {/* Afficher l'image du produit */}
+                    <img
+                      src={imageUrlToDisplay} alt={produit.name}
                       className="img-fluid"
                     />
                   </div>
@@ -118,9 +114,9 @@ function ArtistCard() {
                     <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
                       <h2 className="pink">{selectedProduct?.name}</h2>
                       {/* Afficher l'image du produit sélectionné avec des styles personnalisés */}
-                      <LazyLoadImage
-                        alt={selectedProduct?.name}
+                      <img
                         src={selectedProduct?.images[0].src}
+                        alt={selectedProduct?.name}
                         style={{ width: '150px', height: '150px', objectFit: 'cover' }}
                       />
                       {/* Afficher la description courte du produit */}
