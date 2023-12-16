@@ -100,6 +100,8 @@ function ArtistCard() {
                     <img
                       src={imageUrlToDisplay} alt={produit.name}
                       className="img-fluid"
+                      width="300"
+                      height="200"
                     />
                   </div>
                   <div className="col-12 col-md-7">

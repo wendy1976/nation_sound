@@ -63,6 +63,9 @@
   "react-helmet": "^6.1.0",
   
     
+  "react-helmet-async": "^2.0.3",
+  
+    
   "react-icons": "^4.11.0",
   
     

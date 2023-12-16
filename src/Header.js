@@ -1,5 +1,5 @@
 // Importation des bibliothèques et composants nécessaires
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import React, { useState } from 'react';
 import { Dropdown, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
