@@ -51,10 +51,8 @@ function Header() {
             </Link>
             {/* Menu déroulant d'informations avec sous-menu */}
             <Dropdown show={showInfoSubMenu} onToggle={toggleInfoSubMenu}>
-              <Dropdown.Toggle id="infoDropdown" as={Nav.Link}>
-                <Link to="/infos" className="nav-link" >
-                  <h1 className="h6 pink mt-2" style={{ fontWeight: 600 }}>Informations et FAQ</h1>
-                </Link>
+              <Dropdown.Toggle id="infoDropdown" as={Link} to="/infos" className="nav-link">
+                <h1 className="h6 pink mt-3" style={{ fontWeight: 600 }}>Informations et FAQ</h1>
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {/* Sections du sous-menu */}

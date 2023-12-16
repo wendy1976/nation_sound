@@ -1,16 +1,16 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { MdEmail } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import ArtistCard from './ArtistCard';
 import CarouselComponent from './CarouselComponent';
-import FestivalCountdown from './FestivalCountdown';
 import Footer from './Footer';
 import Header from './Header';
 import ScrollToTopButton from './ScrollToTopButton';
 import ServicesSection from './ServicesSection';
 import miniCarteImage from './assets/imagesEtLogo/images/minicarte.webp';
+
+const ArtistCard = lazy(() => import('./ArtistCard'));
+const FestivalCountdown = lazy(() => import('./FestivalCountdown'));
 
 function Accueil() {
   return (
@@ -38,7 +38,9 @@ function Accueil() {
         <div className="row">
           <div className="col-12">
             {/* ArtistCard Component */}
-            <ArtistCard />
+            <Suspense fallback={<div>Loading...</div>}>
+              <ArtistCard />
+            </Suspense>
           </div>
         </div>
       </div>
@@ -54,7 +56,7 @@ function Accueil() {
             <Card.Body>
               <Card.Title className='pink fw-bold'>Inscrivez-vous à notre newsletter</Card.Title>
               <Card.Text>
-                <p>Pour avoir toutes les dernières informations, abonnez-vous!</p>
+                Pour avoir toutes les dernières informations, abonnez-vous!
                 <Link to="/newsletter">
                   <Button className='bgPink bgNews'>S'abonner <MdEmail /></Button>
                 </Link>
@@ -69,15 +71,13 @@ function Accueil() {
             <Card.Body>
               <Card.Title className='pink fw-bold'>Carte Interactive</Card.Title>
               <Card.Text>
-                <p>Découvrez le plan du festival sur la carte interactive.</p>
+                Découvrez le plan du festival sur la carte interactive.
                 <img
                   src={miniCarteImage}
                   alt="présentation de la carte interactive"
                   style={{ width: '100%', height: 'auto', maxWidth: '500px', display: 'block', margin: '0 auto' }}
-                />
-                <p>
-                  Consultez la <Link to ="/myMap">carte interactive</Link> pour plus de détails.
-                </p>
+                />                
+                  Consultez la <Link to ="/myMap">carte interactive</Link> pour plus de détails.                
               </Card.Text>
             </Card.Body>
           </Card>
@@ -85,15 +85,15 @@ function Accueil() {
 
         {/* Festival Countdown Component */}
         <div className="col-12 col-md-4 pe-3 mx-auto">
-          <Card>
-            <Card.Body>
-              <Card.Title className='pink fw-bold'>Compte à rebours du Festival</Card.Title>
-              <Card.Text>
-                {/* Intégration du composant FestivalCountdown */}
-                <FestivalCountdown />
-              </Card.Text>
-            </Card.Body>
-          </Card>
+        <Card>
+          <Card.Body>
+            <Card.Title className='pink fw-bold'>Compte à rebours du Festival</Card.Title>
+            {/* Intégration du composant FestivalCountdown */}
+            <Suspense fallback={<div>Loading...</div>}>
+              <FestivalCountdown />
+            </Suspense>
+          </Card.Body>
+        </Card>
         </div>
       </div>
       {/* Fin de la section */}
@@ -107,5 +107,4 @@ function Accueil() {
   );
 }
 
-export default Accueil;
- 
+export default Accueil; 
